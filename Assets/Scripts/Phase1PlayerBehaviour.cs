@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour
+public class Phase1PlayerBehaviour : MonoBehaviour
 {
     public Camera cam;
     public Coroutine HoldingObject;
