@@ -31,7 +31,7 @@ public class Phase2TextBehaviour : MonoBehaviour
         }
         else if (RandomEvent == 4)
         {
-            TextStore = "There has been a spill of bleach product/a customer has vomited on aisle 6. Send an employee to clean up the mess.";
+            TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
             StartCoroutine(Scrolling());
         }
     }
