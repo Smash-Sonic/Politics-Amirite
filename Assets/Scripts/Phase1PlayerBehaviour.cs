@@ -15,12 +15,14 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     void Start()
     {
         EmployeeList = GameObject.FindGameObjectsWithTag("Person");
+        /*
         for (int i = 0; i < EmployeeList.Length; i++)
         {
             Debug.Log(EmployeeList[i]);
         }
+        */
         EmployeesOwned = (EmployeeList.Length);
-        Debug.Log(EmployeesOwned);
+        //Debug.Log(EmployeesOwned);
     }
 
     void Update()
@@ -34,42 +36,45 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
 
             //put all the touched colliders in debug log
+            /*
             for (int i = 0; i < HitColliders.Length; i++)
             {
                 Debug.Log(HitColliders[i]);
             }
+            */
 
-            if (IsHolding == false)
+            //for picking up an object
+            //can only pick up if something is not already held and at least one collider was detected
+            if (IsHolding == false && HitColliders.Length >= 1)
             {
-                if (HitColliders.Length >= 1)
+                for (int i = 0; i < HitColliders.Length; i++)
                 {
-                    if (HitColliders[0].tag == "Person")
+                    if (HitColliders[i].tag == "Person")
                     {
                         IsHolding = true;
+                        HoldingObject = StartCoroutine(PickUp(HitColliders[i]));
+
                         //for being picked up off of a target
-                        for (int i = 0; i < HitColliders.Length; i++)
+                        if (HitColliders[i].tag == "Target")
                         {
-                            if (HitColliders[i].tag == "Target")
-                            {
-                                EmployeesDelegated--;
-                            }
+                            EmployeesDelegated--;
                         }
-                        HoldingObject = StartCoroutine(PickUp(HitColliders[0]));
                     }
-                    else if (HitColliders[0].name == "EndButton")
+                    else if (HitColliders[i].name == "EndButton")
                     {
                         //check if all employees have been delegated
                         if (EmployeesDelegated >= EmployeesOwned)
                         {
-                            Debug.Log("end phase?");
+                            //Debug.Log("end phase");
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
                         }
                         else
                         {
-                            Debug.Log("Please Delegate all employees to a task.");
+                            //Debug.Log("Please Delegate all employees to a task.");
                         }
                     }
-                    //Debug.Log(hitCollider.name);
                 }
+                //Debug.Log(hitCollider.name);
             }
             else if (IsHolding == true)
             {

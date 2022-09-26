@@ -11,6 +11,7 @@ public class Phase2TextBehaviour : MonoBehaviour
 
     void Start()
     {
+        EventText.text = null;
         RandomEvent = Random.Range(1,5);
 
         if (RandomEvent == 1)

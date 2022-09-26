@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phase2PlayerBehaviour : MonoBehaviour
+public class Phase3PlayerBehaviour : MonoBehaviour
 {
     public Camera cam;
     public Coroutine HoldingObject;
@@ -29,29 +29,23 @@ public class Phase2PlayerBehaviour : MonoBehaviour
             {
                 if (HitColliders.Length >= 1)
                 {
-                    if (HitColliders[0].tag == "Person")
+                    if (HitColliders[0].tag == "Money")
                     {
                         IsHolding = true;
-                        for (int i = 0; i < HitColliders.Length; i++)
-                        {
-                            if (HitColliders[i].tag == "Target")
-                            {
-                                Delegated = false;
-                            }
-                        }
                         HoldingObject = StartCoroutine(PickUp(HitColliders[0]));
                     }
                     else if (HitColliders[0].name == "EndButton")
                     {
-                        //check if an employee has been delegated
-                        if (Delegated == true)
+                        //Debug.Log("End phase?");
+                        if (GameController.CurrentDay <= 6)
                         {
-                            //Debug.Log("End phase?");
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                            GameController.CurrentDay++;
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
                         }
-                        else
+                        else if (GameController.CurrentDay >= 7)
                         {
-                            Debug.Log("Please Delegate an employees to this task.");
+                            //end the game
+                            Debug.Log("the game is over");
                         }
                     }
                     //Debug.Log(hitCollider.name);
