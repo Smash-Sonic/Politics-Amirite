@@ -343,8 +343,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 0.7
+  m_fontSizeBase: 0.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1220,7 +1220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f2b40180b145c4090fd570ae999b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentDay: 1
   DayText: {fileID: 350261716}
 --- !u!4 &1631958011
 Transform:

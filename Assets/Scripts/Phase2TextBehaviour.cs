@@ -16,22 +16,22 @@ public class Phase2TextBehaviour : MonoBehaviour
 
         if (RandomEvent == 1)
         {
-            TextStore = "Random event 1";
+            TextStore = "A child is lost in the store and can’t find their parents, the child is extremely nervous and is on the brink of crying and screaming, send someone friendly to go with the child to find their parents.";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 2)
         {
-            TextStore = "Random event 2";
+            TextStore = "An old Woman tells customer service that she has lost her purse, send someone to help her find it.";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 3)
         {
-            TextStore = "Random event 3";
+            TextStore = "The Cleanup Company™ accepts a brand deal with your store, one of your employees needs to dress up as the company mascot: Captain Cleanup™ and stand outside the store promoting the new line of Cleanup detergent™";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 4)
         {
-            TextStore = "Random event 4";
+            TextStore = "There has been a spill of bleach product/a customer has vomited on aisle 6. Send an employee to clean up the mess.";
             StartCoroutine(Scrolling());
         }
     }
