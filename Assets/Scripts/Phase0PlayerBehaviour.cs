@@ -2,51 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phase1PlayerBehaviour : MonoBehaviour
+public class Phase0PlayerBehaviour : MonoBehaviour
 {
     public Camera cam;
     public Coroutine HoldingObject;
     public Collider2D[] HitColliders;
-    //public GameObject[] EmployeeList;
-    public int EmployeesDelegated = 0;
+    public int EmployeesHired = 0;
     public bool IsHolding = false;
-
-    void Start()
-    {
-        //Instantiate(GameController.HiredEmployees[0]);
-        //EmployeeList = GameObject.FindGameObjectsWithTag("Person");
-        
-        for (int i = 0; i < GameController.HiredEmployees.Count; i++)
-        {
-            GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
-            GameController.HiredEmployees[i].AddComponent<BoxCollider2D>();
-            GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().size = new Vector2(2, 3.5f);
-            GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
-        }
-        
-        //EmployeesOwned = (EmployeeList.Length);
-    }
 
     void Update()
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             //check for object to pick up or button to press
             HitColliders = null;
             HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
-
-            //put all the touched colliders in debug log
             /*
             for (int i = 0; i < HitColliders.Length; i++)
             {
                 Debug.Log(HitColliders[i]);
             }
             */
-
-            //for picking up an object
-            //can only pick up if something is not already held and at least one collider was detected
             if (IsHolding == false && HitColliders.Length >= 1)
             {
                 for (int i = 0; i < HitColliders.Length; i++)
@@ -56,27 +34,34 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                         if (IsHolding == false)
                         {
                             IsHolding = true;
-                            HoldingObject = StartCoroutine(PickUp(HitColliders[i]));
+                            HoldingObject = StartCoroutine(PickUp(HitColliders[0]));
 
                             //for being picked up off of a target
                             /*if (HitColliders[i].tag == "Target")
                             {
-                                EmployeesDelegated--;
+                                EmployeesHired--;
                             }*/
                         }
                     }
                     else if (HitColliders[i].name == "EndButton")
                     {
-                        //check if all employees have been delegated
-                        if (EmployeesDelegated >= 5)
+                        //check if an employee has been delegated
+                        if (EmployeesHired == 5)
                         {
-                            //Debug.Log("End Phase");
-                            GameController.Money += 4;
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                            //Debug.Log("End phase");
+                            
+                            for (int h = 0; h < GameController.HiredEmployees.Count; h++)
+                            {
+                                //prepare for sending to the next phase
+                                DontDestroyOnLoad(GameController.HiredEmployees[h]);
+                                //Debug.Log(GameController.HiredEmployees[h]);
+                            }
+                            
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
                         }
                         else
                         {
-                            //Debug.Log("Please Delegate all employees to a task.");
+                            Debug.Log("Please Pick Employees to hire.");
                         }
                     }
                 }
@@ -84,17 +69,16 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             else if (IsHolding == true)
             {
                 //let go of held object
-
-                //for being dropped onto a target
                 for (int i = 0; i < HitColliders.Length; i++)
                 {
                     if (HitColliders[i].tag == "Target")
                     {
-                        EmployeesDelegated++;
+                        EmployeesHired++;
                         for (int h = 0; h < HitColliders.Length; h++)
                         {
                             if (HitColliders[h].tag == "Person")
                             {
+                                GameController.HiredEmployees.Add(HitColliders[h].gameObject);
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
                             }
@@ -107,7 +91,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator PickUp(Collider2D PickedUp) 
+    IEnumerator PickUp(Collider2D PickedUp)
     {
         yield return new WaitForSeconds(0.01f);
         while (true)

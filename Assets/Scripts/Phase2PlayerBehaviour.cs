@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Phase2PlayerBehaviour : MonoBehaviour
 {
@@ -9,7 +10,19 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     public Collider2D[] HitColliders;
     public bool IsHolding = false;
     public bool Delegated = false;
+    public CharacterStats ChosenStats;
 
+    void Start()
+    {
+        for (int i = 0; i < GameController.HiredEmployees.Count; i++)
+        {
+            //Debug.Log(i);
+            GameController.HiredEmployees[i].transform.position = new Vector3((i * 2.5f) - 7.5f, 3f, 0);
+            GameController.HiredEmployees[i].AddComponent<BoxCollider2D>();
+            GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().size = new Vector2(2, 3.5f);
+            GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
+        }
+    }
     void Update()
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
@@ -25,36 +38,41 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                 Debug.Log(HitColliders[i]);
             }
             */
-            if (IsHolding == false)
+            if (IsHolding == false && HitColliders.Length >= 1)
             {
-                if (HitColliders.Length >= 1)
+                for (int i = 0; i < HitColliders.Length; i++)
                 {
-                    if (HitColliders[0].tag == "Person")
+                    if (HitColliders[i].tag == "Person")
                     {
-                        IsHolding = true;
-                        for (int i = 0; i < HitColliders.Length; i++)
+                        if (IsHolding == false)
                         {
-                            if (HitColliders[i].tag == "Target")
+                            IsHolding = true;
+                            HoldingObject = StartCoroutine(PickUp(HitColliders[0]));
+
+                            //for being picked up off of a target
+                            /*if (HitColliders[i].tag == "Target")
                             {
                                 Delegated = false;
-                            }
+                            }*/
                         }
-                        HoldingObject = StartCoroutine(PickUp(HitColliders[0]));
                     }
-                    else if (HitColliders[0].name == "EndButton")
+                    else if (HitColliders[i].name == "EndButton")
                     {
                         //check if an employee has been delegated
                         if (Delegated == true)
                         {
-                            //Debug.Log("End phase?");
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                            //Debug.Log("End phase");
+                            if (Phase2TextBehaviour.TextFinished == true)
+                            {
+                                Phase2TextBehaviour.ButtonPressed = true;
+                            }
+                            //UnityEngine.SceneManagement.SceneManager.LoadScene(3);
                         }
                         else
                         {
-                            Debug.Log("Please Delegate an employees to this task.");
+                        Debug.Log("Please Delegate an employees to this task.");
                         }
                     }
-                    //Debug.Log(hitCollider.name);
                 }
             }
             else if (IsHolding == true)
@@ -65,6 +83,21 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                     if (HitColliders[i].tag == "Target")
                     {
                         Delegated = true;
+                        for (int h = 0; h < HitColliders.Length; h++)
+                        {
+                            if (HitColliders[h].tag == "Person")
+                            {
+                                Destroy(HitColliders[i]);
+                                Destroy(HitColliders[h]);
+
+                                //getting stats for the chosen employee
+                                ChosenStats = HitColliders[h].gameObject.GetComponent<CharacterStats>();
+
+                                Phase2TextBehaviour.CharacterStr = ChosenStats.Strength;
+                                Phase2TextBehaviour.CharacterInt = ChosenStats.Intelligence;
+                                Phase2TextBehaviour.CharacterSoc = ChosenStats.SocialSkills;
+                            }
+                        }
                     }
                 }
                 IsHolding = false;
