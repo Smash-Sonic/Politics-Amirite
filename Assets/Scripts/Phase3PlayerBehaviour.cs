@@ -11,6 +11,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     public CharacterStats EmployeeStats;
     public bool IsHolding = false;
     public bool Delegated = false;
+    public bool MoneySpent = false;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
             */
             if (IsHolding == false && HitColliders.Length >= 1)
             {
+                MoneySpent = false;
                 for (int i = 0; i < HitColliders.Length; i++)
                 {
                     if (HitColliders[i].tag == "Money")
@@ -106,15 +108,19 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                         //give money to employee
                         GameController.Money--;
                         //increase employee stats
-                        EmployeeStats = HitColliders[i].gameObject.GetComponent<CharacterStats>();
-                        EmployeeStats.Strength++;
-                        EmployeeStats.Intelligence++;
-                        EmployeeStats.SocialSkills++;
-
+                        if (MoneySpent == false)
+                        {
+                            EmployeeStats = HitColliders[i].gameObject.GetComponent<CharacterStats>();
+                            EmployeeStats.Strength++;
+                            EmployeeStats.Intelligence++;
+                            EmployeeStats.SocialSkills++;
+                            //Debug.Log("please don't run twice");
+                        }
                         for (int h = 0; h < HitColliders.Length; h++)
                         {
                             if (HitColliders[h].tag == "Money")
                             {
+                                MoneySpent = true;
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
                             }
