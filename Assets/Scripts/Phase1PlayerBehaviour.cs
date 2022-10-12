@@ -71,7 +71,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                         if (EmployeesDelegated >= 5)
                         {
                             //Debug.Log("End Phase");
-                            GameController.Money += 4;
+                            //GameController.Money += 4;
                             UnityEngine.SceneManagement.SceneManager.LoadScene(2);
                         }
                         else
@@ -91,6 +91,8 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                     if (HitColliders[i].tag == "Target")
                     {
                         EmployeesDelegated++;
+                        //check for which target, do stuff accordingly
+                        //GameController.Money += 1;
                         for (int h = 0; h < HitColliders.Length; h++)
                         {
                             if (HitColliders[h].tag == "Person")
