@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Phase1PlayerBehaviour : MonoBehaviour
 {
     public Camera cam;
     public Coroutine HoldingObject;
     public Collider2D[] HitColliders;
-    //public GameObject[] EmployeeList;
+    public TMP_Text ResultsText;
     public int EmployeesDelegated = 0;
     public bool IsHolding = false;
+    string[] EmployeeNames = new string[20];
+    public GameObject TextBox;
 
     void Start()
     {
         //Instantiate(GameController.HiredEmployees[0]);
         //EmployeeList = GameObject.FindGameObjectsWithTag("Person");
-        
+
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
         {
             GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
@@ -72,7 +75,9 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                         {
                             //Debug.Log("End Phase");
                             //GameController.Money += 4;
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+
+                            //text time
+                            StartCoroutine(PhaseResults());
                         }
                         else
                         {
@@ -90,13 +95,14 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 {
                     if (HitColliders[i].tag == "Target")
                     {
-                        EmployeesDelegated++;
                         //check for which target, do stuff accordingly
                         //GameController.Money += 1;
                         for (int h = 0; h < HitColliders.Length; h++)
                         {
                             if (HitColliders[h].tag == "Person")
                             {
+                                EmployeeNames[EmployeesDelegated] = HitColliders[h].name;
+                                EmployeesDelegated++;
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
                             }
@@ -107,6 +113,13 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 StopCoroutine(HoldingObject);
             }
         }
+    }
+
+    IEnumerator PhaseResults() 
+    {
+        TextBox.SetActive(true);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        return null;
     }
 
     IEnumerator PickUp(Collider2D PickedUp) 
