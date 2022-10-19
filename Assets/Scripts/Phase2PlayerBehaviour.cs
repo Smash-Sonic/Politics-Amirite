@@ -93,6 +93,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                                 //getting stats for the chosen employee
                                 ChosenStats = HitColliders[h].gameObject.GetComponent<CharacterStats>();
 
+                                Phase2TextBehaviour.CharacterName = HitColliders[h].name;
                                 Phase2TextBehaviour.CharacterStr = ChosenStats.Strength;
                                 Phase2TextBehaviour.CharacterInt = ChosenStats.Intelligence;
                                 Phase2TextBehaviour.CharacterSoc = ChosenStats.SocialSkills;

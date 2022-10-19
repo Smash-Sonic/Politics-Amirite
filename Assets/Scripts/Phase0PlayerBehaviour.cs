@@ -57,7 +57,7 @@ public class Phase0PlayerBehaviour : MonoBehaviour
                                 //Debug.Log(GameController.HiredEmployees[h]);
                             }
                             
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
                         }
                         else
                         {
