@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/OpeningMovie.unity
+    guid: 8341876f03498234a9b472837bcad8c2
+  - enabled: 1
     path: Assets/Scenes/Phase 0.unity
     guid: f6ae7a0d078e1154686a0c464d26b1a9
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Phase 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Phase 2.unity

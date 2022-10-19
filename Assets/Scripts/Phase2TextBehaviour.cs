@@ -13,6 +13,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     public static int CharacterStr;
     public static int CharacterInt;
     public static int CharacterSoc;
+    public static string CharacterName;
 
     void Start()
     {
@@ -45,8 +46,6 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         if (ButtonPressed == true)
         {
-            //success is random rn, needs to be based on stats
-            //Success = (Random.value > 0.5f);
             EventText.text = null;
             ButtonPressed = false;
             StopCoroutine(Scrolling());
@@ -60,12 +59,12 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             if (CharacterSoc >= 4)
             {
-                TextStore = "[Character name] is kind and welcoming to the child and calms them down, after a little searching the parents of the child are found and the family is happily reunited. +1 Relationship.";
+                TextStore = CharacterName + " is kind and welcoming to the child and calms them down, after a little searching the parents of the child are found and the family is happily reunited. +1 Relationship.";
                 GameController.Relationship++;
             }
             else
             {
-                TextStore = "[Character name] approaches the child but before they can get to them, the child screams and runs away. This causes a scene and the police are called to the store. -$100 in lost income.";
+                TextStore = CharacterName + " approaches the child but before they can get to them, the child screams and runs away. This causes a scene and the police are called to the store. -$100 in lost income.";
                 GameController.Money--;
             }
             StartCoroutine(Scrolling());
@@ -74,12 +73,12 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             if (CharacterSoc >= 3)
             {
-                TextStore = "[Character name] is able to locate the missing purse and is kind to the elderly woman, [Character name] is given a cookie as a reward from the elderly woman. +1 Relationship.";
+                TextStore = CharacterName + " is able to locate the missing purse and is kind to the elderly woman, [Character name] is given a cookie as a reward from the elderly woman. +1 Relationship.";
                 GameController.Relationship++;
             }
             else if (CharacterSoc < 3)
             {
-                TextStore = "[Character name] searches the entire store but cannot find the missing purse, [Character name] then has the “brilliant idea” to search the Wharmongran embassy, [Character name] is later arrested for trespassing. -$100 in lost income and -1 relationship.";
+                TextStore = CharacterName + " searches the entire store but cannot find the missing purse, [Character name] then has the “brilliant idea” to search the Wharmongran embassy, [Character name] is later arrested for trespassing. -$100 in lost income and -1 relationship.";
                 GameController.Money--;
                 GameController.Relationship++;
             }
@@ -90,12 +89,12 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             if (CharacterStr >= 3)
             {
-                TextStore = "[Character name] as Captain Cleanup™ is a huge hit with customers! The Cleanup Company™ gives you a bonus payment of $200.";
+                TextStore = CharacterName + " as Captain Cleanup™ is a huge hit with customers! The Cleanup Company™ gives you a bonus payment of $200.";
                 GameController.Money = GameController.Money + 2;
             }
             else if (CharacterStr < 3)
             {
-                TextStore = "[Character name] as Captain Cleanup™ is a menace to society and scares away many potential customers. You lose $100 of your average earnings today.";
+                TextStore = CharacterName + " as Captain Cleanup™ is a menace to society and scares away many potential customers. You lose $100 of your average earnings today.";
                 GameController.Money--;
             }
             StartCoroutine(Scrolling());
@@ -104,12 +103,12 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             if (CharacterInt >= 3)
             {
-                TextStore = " [Character name] successfully cleans up the spill and there are no casualties. +1 Relationship.";
+                TextStore = CharacterName + " successfully cleans up the spill and there are no casualties. +1 Relationship.";
                 GameController.Relationship++;
             }
             else if (CharacterInt < 3)
             {
-                TextStore = "[Character name] Fails so miserably that the fire department is called to the store. -$100 in lost income";
+                TextStore = CharacterName + " Fails so miserably that the fire department is called to the store. -$100 in lost income";
                 GameController.Money--;
             }
             StartCoroutine(Scrolling());
@@ -119,7 +118,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         foreach (char c in TextStore)
         {
-            //adds the next character to the text every 0.05 seconds
+            //adds the next character to the text every 0.04 seconds
             EventText.text += c;
             yield return new WaitForSeconds(0.04f);
         }
@@ -130,7 +129,7 @@ public class Phase2TextBehaviour : MonoBehaviour
         else if (TextFinished == true)
         {
             yield return new WaitForSeconds(0.75f);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
         }
     }
 }

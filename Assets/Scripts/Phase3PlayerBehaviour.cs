@@ -74,12 +74,32 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                         if (GameController.CurrentDay <= 6)
                         {
                             GameController.CurrentDay++;
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
                         }
                         else if (GameController.CurrentDay >= 7)
                         {
                             //end the game
-                            Debug.Log("the game is over");
+                            if (GameController.Relationship >= 5)
+                            {
+                                //best ending
+                                MovieManager.MovieNumber = 3;
+                            }
+                            else if (GameController.Relationship >= 0) 
+                            {
+                                //good ending
+                                MovieManager.MovieNumber = 4;
+                            }
+                            else if (GameController.Relationship <= -5)
+                            {
+                                //worst ending
+                                MovieManager.MovieNumber = 1;
+                            }
+                            else if (GameController.Relationship <= -1)
+                            {
+                                //bad ending
+                                MovieManager.MovieNumber = 2;
+                            }
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
                         }
                     }
                 }
