@@ -291,5 +291,5 @@ MonoBehaviour:
   IntroMovie: {fileID: 32900000, guid: acd2fd491fdb0ff4eb3d7de6fe45a824, type: 3}
   Ending1: {fileID: 32900000, guid: ec0ba69b356714540aac1a0ad43a2a37, type: 3}
   Ending2: {fileID: 32900000, guid: 0fa1b04fc5d1a3a47892ad506f76aa40, type: 3}
-  Ending3: {fileID: 32900000, guid: da6e9ea1d40bb8b4ea76205cf9d97b3d, type: 3}
+  Ending3: {fileID: 32900000, guid: 74d98ffe7eb10a64ca3dc8e9c61dcfcc, type: 3}
   Ending4: {fileID: 32900000, guid: 0cfc216730352e6449506bb5f51da219, type: 3}
