@@ -126,12 +126,12 @@ public class Phase2TextBehaviour : MonoBehaviour
         }
         else if (RandomEvent == 5)
         {
-            if (CharacterStr >= 3)
+            if (CharacterStr <= 3)
             {
                 TextStore = CharacterName + "cannot beat the diplomat in a basic test of strength with their goofy little noodle arms. Wharmongra reaffirms their superiority to themselves +2 relationship.";
                 GameController.Relationship = GameController.Relationship + 2;
             }
-            else if (CharacterStr < 3)
+            else if (CharacterStr > 3)
             {
                 TextStore = CharacterName + "wipes the floor with the diplomat, Wharmongra takes this as an act of aggression against their wonderful nation! -3 relationship.";
                 GameController.Relationship = GameController.Relationship - 3;
