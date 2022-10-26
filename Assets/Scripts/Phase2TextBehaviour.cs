@@ -49,7 +49,7 @@ public class Phase2TextBehaviour : MonoBehaviour
         }
         else if (RandomEvent == 5)
         {
-            TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
+            TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra";
             StartCoroutine(Scrolling());
         }
     }
@@ -121,6 +121,20 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 TextStore = CharacterName + " Fails so miserably that the fire department is called to the store. -$100 in lost income";
                 GameController.Money--;
+            }
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 5)
+        {
+            if (CharacterStr >= 3)
+            {
+                TextStore = CharacterName + "cannot beat the diplomat in a basic test of strength with their goofy little noodle arms. Wharmongra reaffirms their superiority to themselves +2 relationship.";
+                GameController.Relationship = GameController.Relationship + 2;
+            }
+            else if (CharacterStr < 3)
+            {
+                TextStore = CharacterName + "wipes the floor with the diplomat, Wharmongra takes this as an act of aggression against their wonderful nation! -3 relationship.";
+                GameController.Relationship = GameController.Relationship - 3;
             }
             StartCoroutine(Scrolling());
         }
