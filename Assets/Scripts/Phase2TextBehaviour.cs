@@ -20,13 +20,12 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         TextFinished = false;
         EventText.text = null;
-        RandomEvent = Random.Range(1,6);
+        RandomEvent = Random.Range(1,9);
         if (RandomEvent == LastEvent)
         {
             //reroll
-            RandomEvent = Random.Range(1, 7);
+            RandomEvent = Random.Range(1, 9);
         }
-
         if (RandomEvent == 1)
         {
             TextStore = "A child is lost in the store and can’t find their parents, the child is extremely nervous and is on the brink of crying and screaming, send someone friendly to go with the child to find their parents.";
@@ -55,6 +54,16 @@ public class Phase2TextBehaviour : MonoBehaviour
         else if (RandomEvent == 6)
         {
             TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator";
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 7)
+        {
+            TextStore = "A con artist has entered the store, claiming that someone in the store owes them money, send someone to deal with them without being talkative";
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 8)
+        {
+            TextStore = "Someone drops a quarter into a manhole, there is a green sludge at the bottom, the quarter is not worth it, only an idiot would go after it… But maybe an idiot is exactly what you need!";
             StartCoroutine(Scrolling());
         }
     }
@@ -154,6 +163,34 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 TextStore = CharacterName + "is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store.";
                 GameController.Money--;
+            }
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 7)
+        {
+            if (CharacterSoc <= 4)
+            {
+                TextStore = CharacterName + " kicks out the con artist without speaking a single word, Wharmongra likes the no nonsense approach +1 to relationship";
+                GameController.Relationship++;
+            }
+            else
+            {
+                TextStore = CharacterName + "  approaches the strange man and says something kind to the man, before they can blink the man yells “DAMN BRAT I’LL SUE!!!”  you lose $300 of today’s earnings";
+                GameController.Money = GameController.Money - 3;
+            }
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 8)
+        {
+            if (CharacterInt <= 4)
+            {
+                TextStore = CharacterName + " Avoids all the red flags and retrieves the quarter, the toxic waste somehow doesn’t kill them and gives them superhuman strength +3 to strength.";
+                CharacterStr = CharacterStr + 3;
+            }
+            else
+            {
+                TextStore = CharacterName + "is not as dumb as they look and refuses to retreve the quarter, Wharmongra dislikes your employee’s survival instincts being more powerful than their loyalty to you. -1 relationship";
+                GameController.Relationship = GameController.Relationship - 2;
             }
             StartCoroutine(Scrolling());
         }
