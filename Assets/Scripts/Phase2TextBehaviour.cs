@@ -24,7 +24,7 @@ public class Phase2TextBehaviour : MonoBehaviour
         if (RandomEvent == LastEvent)
         {
             //reroll
-            RandomEvent = Random.Range(1, 6);
+            RandomEvent = Random.Range(1, 7);
         }
 
         if (RandomEvent == 1)
@@ -50,6 +50,11 @@ public class Phase2TextBehaviour : MonoBehaviour
         else if (RandomEvent == 5)
         {
             TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra";
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 6)
+        {
+            TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator";
             StartCoroutine(Scrolling());
         }
     }
@@ -135,6 +140,20 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 TextStore = CharacterName + "wipes the floor with the diplomat, Wharmongra takes this as an act of aggression against their wonderful nation! -3 relationship.";
                 GameController.Relationship = GameController.Relationship - 3;
+            }
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 6)
+        {
+            if (CharacterInt >= 9)
+            {
+                TextStore = CharacterName + " Successfully gets them out of the elevator, the lawyer gives you a big tip.";
+                GameController.Money++;
+            }
+            else if (CharacterInt < 9)
+            {
+                TextStore = CharacterName + "is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store.";
+                GameController.Money--;
             }
             StartCoroutine(Scrolling());
         }
