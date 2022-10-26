@@ -10,7 +10,6 @@ public class Phase2TextBehaviour : MonoBehaviour
     public int RandomEvent;
     public string TextStore;
     public TMP_Text EventText;
-    public static int LastEvent = 99;
     public static int CharacterStr;
     public static int CharacterInt;
     public static int CharacterSoc;
@@ -20,14 +19,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         TextFinished = false;
         EventText.text = null;
-        RandomEvent = Random.Range(1,5);
-        //check if the last event used
-        if (RandomEvent == LastEvent)
-        {
-            //reroll
-            RandomEvent = Random.Range(1, 5);
-        }
-        LastEvent = RandomEvent;
+        RandomEvent = Random.Range(1,6);
 
         if (RandomEvent == 1)
         {
@@ -45,6 +37,11 @@ public class Phase2TextBehaviour : MonoBehaviour
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 4)
+        {
+            TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 5)
         {
             TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
             StartCoroutine(Scrolling());
