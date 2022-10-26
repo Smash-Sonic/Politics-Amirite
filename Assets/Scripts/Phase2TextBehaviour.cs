@@ -19,7 +19,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         TextFinished = false;
         EventText.text = null;
-        RandomEvent = Random.Range(1,5);
+        RandomEvent = Random.Range(1,6);
 
         if (RandomEvent == 1)
         {
@@ -37,6 +37,11 @@ public class Phase2TextBehaviour : MonoBehaviour
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 4)
+        {
+            TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
+            StartCoroutine(Scrolling());
+        }
+        else if (RandomEvent == 5)
         {
             TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
             StartCoroutine(Scrolling());
