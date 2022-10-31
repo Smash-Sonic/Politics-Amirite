@@ -28,41 +28,49 @@ public class Phase2TextBehaviour : MonoBehaviour
         }
         if (RandomEvent == 1)
         {
+            TextStore = null;
             TextStore = "A child is lost in the store and can’t find their parents, the child is extremely nervous and is on the brink of crying and screaming, send someone friendly to go with the child to find their parents.";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 2)
         {
+            TextStore = null;
             TextStore = "An old Woman tells customer service that she has lost her purse, send someone to help her find it.";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 3)
         {
+            TextStore = null;
             TextStore = "The Cleanup Company™ accepts a brand deal with your store. One of your employees needs to dress up as the company mascot: Captain Cleanup™ and stand outside the store to promote the new line of Cleanup detergent™.";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 4)
         {
+            TextStore = null;
             TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 5)
         {
+            TextStore = null;
             TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 6)
         {
+            TextStore = null;
             TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 7)
         {
+            TextStore = null;
             TextStore = "A con artist has entered the store, claiming that someone in the store owes them money, send someone to deal with them without being talkative";
             StartCoroutine(Scrolling());
         }
         else if (RandomEvent == 8)
         {
+            TextStore = null;
             TextStore = "Someone drops a quarter into a manhole, there is a green sludge at the bottom, the quarter is not worth it, only an idiot would go after it… But maybe an idiot is exactly what you need!";
             StartCoroutine(Scrolling());
         }
@@ -71,6 +79,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         if (ButtonPressed == true)
         {
+            TextStore = null;
             EventText.text = null;
             ButtonPressed = false;
             StopCoroutine(Scrolling());
@@ -84,11 +93,13 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             if (CharacterSoc >= 4)
             {
+                TextStore = null;
                 TextStore = CharacterName + " is kind and welcoming to the child and calms them down, after a little searching the parents of the child are found and the family is happily reunited. +1 Relationship.";
                 GameController.Relationship++;
             }
             else
             {
+                TextStore = null;
                 TextStore = CharacterName + " approaches the child but before they can get to them, the child screams and runs away. This causes a scene and the police are called to the store. -$100 in lost income.";
                 GameController.Money--;
             }
@@ -98,11 +109,13 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             if (CharacterSoc >= 3)
             {
+                TextStore = null;
                 TextStore = CharacterName + " is able to locate the missing purse and is kind to the elderly woman, [Character name] is given a cookie as a reward from the elderly woman. +1 Relationship.";
                 GameController.Relationship++;
             }
             else if (CharacterSoc < 3)
             {
+                TextStore = null;
                 TextStore = CharacterName + " searches the entire store but cannot find the missing purse, [Character name] then has the “brilliant idea” to search the Wharmongran embassy, [Character name] is later arrested for trespassing. -$100 in lost income and -1 relationship.";
                 GameController.Money--;
                 GameController.Relationship++;
