@@ -48,7 +48,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 94
+=======
+  controlID: 65
+>>>>>>> Stashed changes
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -66,10 +70,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 921.6
     y: 0
+<<<<<<< Updated upstream
     width: 284.80005
     height: 665.2
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+    width: 362.80005
+    height: 732
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> Stashed changes
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -223,7 +234,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 16
+=======
+  controlID: 66
+>>>>>>> Stashed changes
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +263,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 17
+=======
+  controlID: 67
+>>>>>>> Stashed changes
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +336,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< Updated upstream
     - Assets
+=======
+    - Assets/Scenes
+>>>>>>> Stashed changes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< Updated upstream
   - Assets
+=======
+  - Assets/Scenes
+>>>>>>> Stashed changes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Jerry\Politics-Amirite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
     m_SelectedIDs: a85f0000
     m_LastClickedID: 24488
     m_ExpandedIDs: 00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f000000ca9a3b
+=======
+    m_SelectedIDs: 80610000
+    m_LastClickedID: 24960
+    m_ExpandedIDs: 000000006861000000ca9a3b
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,7 +393,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000
+=======
+    m_ExpandedIDs: 0000000068610000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -488,6 +525,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 0cfbffff
@@ -495,13 +533,26 @@ MonoBehaviour:
         m_UserAcceptedRename: 0
         m_Name: 
         m_OriginalName: 
+=======
+      m_SelectedIDs: 147c0000
+      m_LastClickedID: 31764
+      m_ExpandedIDs: b0eafffff0efffff9cf0fffff2f0ffff2cfbffff08650000
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: Square
+        m_OriginalName: Square
+>>>>>>> Stashed changes
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
+<<<<<<< Updated upstream
         m_UserData: 0
+=======
+        m_UserData: -2406
+>>>>>>> Stashed changes
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 11
@@ -761,9 +812,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< Updated upstream
     m_Target: {x: 8.672506, y: 0.2010732, z: -0.08258468}
     speed: 2
     m_Value: {x: 9.409948, y: 0.0008535832, z: -0.09118826}
+=======
+    m_Target: {x: -0.8191992, y: -0.17565033, z: -0.039142277}
+    speed: 2
+    m_Value: {x: -0.8191992, y: -0.17565033, z: -0.039142277}
+>>>>>>> Stashed changes
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -814,9 +871,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< Updated upstream
     m_Target: 18.258524
     speed: 2
     m_Value: 19.118874
+=======
+    m_Target: 1.5728134
+    speed: 2
+    m_Value: 1.5728134
+>>>>>>> Stashed changes
   m_Ortho:
     m_Target: 1
     speed: 2
