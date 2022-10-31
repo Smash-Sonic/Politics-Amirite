@@ -2623,7 +2623,7 @@ GameObject:
   - component: {fileID: 918281816}
   m_Layer: 0
   m_Name: Jerry The Ghost
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
