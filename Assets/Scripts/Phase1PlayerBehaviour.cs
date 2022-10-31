@@ -18,9 +18,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
-        //Instantiate(GameController.HiredEmployees[0]);
-        //EmployeeList = GameObject.FindGameObjectsWithTag("Person");
-
+        //for setting employee positions
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
         {
             GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
@@ -28,8 +26,9 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().size = new Vector2(2, 3.5f);
             GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
         }
-        
-        //EmployeesOwned = (EmployeeList.Length);
+
+        //employee availability here
+
     }
 
     void Update()
