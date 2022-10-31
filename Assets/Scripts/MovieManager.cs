@@ -38,9 +38,21 @@ public class MovieManager : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown("space"))
+        {
+            if (MovieNumber == 0)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            }
+        }
+
+        //when the movie is over
         if ((int)MoviePlayer.time >= (int)MoviePlayer.length) 
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            if (MovieNumber == 0)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            }
         }
     }
 }
