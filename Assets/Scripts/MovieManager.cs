@@ -29,7 +29,6 @@ public class MovieManager : MonoBehaviour
         }
         else if (MovieNumber == 3)
         {
-            Debug.Log("Placeholder");
             MoviePlayer.clip = Ending3;
         }
         else if (MovieNumber == 4)
