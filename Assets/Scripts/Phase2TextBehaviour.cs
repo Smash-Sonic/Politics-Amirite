@@ -55,19 +55,19 @@ public class Phase2TextBehaviour : MonoBehaviour
             else if (RandomEvent == 5)
             {
                 TextStore = null;
-                TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra";
+                TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra.";
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 6)
             {
                 TextStore = null;
-                TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator";
+                TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator.";
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 7)
             {
                 TextStore = null;
-                TextStore = "A con artist has entered the store, claiming that someone in the store owes them money, send someone to deal with them without being talkative";
+                TextStore = "A con artist has entered the store, claiming that someone in the store owes them money, send someone to deal with them without being talkative.";
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 8)
@@ -183,7 +183,7 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 if (CharacterStr <= 3)
                 {
-                    TextStore = CharacterName + "cannot beat the diplomat in a basic test of strength with their goofy little noodle arms. Wharmongra reaffirms their superiority to themselves +2 relationship.";
+                    TextStore = CharacterName + " cannot beat the diplomat in a basic test of strength with their goofy little noodle arms. Wharmongra reaffirms their superiority to themselves +2 relationship.";
                     GameController.Relationship = GameController.Relationship + 2;
                 }
                 else if (CharacterStr > 3)
@@ -197,7 +197,7 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 if (CharacterInt >= 9)
                 {
-                    TextStore = CharacterName + " Successfully gets them out of the elevator, the lawyer gives you a big tip.";
+                    TextStore = CharacterName + " successfully gets them out of the elevator, the lawyer gives you a big tip.";
                     GameController.Money++;
                 }
                 else if (CharacterInt < 9)
@@ -216,7 +216,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 else
                 {
-                    TextStore = CharacterName + "  approaches the strange man and says something kind to the man, before they can blink the man yells “DAMN BRAT I’LL SUE!!!”  you lose $300 of today’s earnings";
+                    TextStore = CharacterName + " approaches the strange man and says something kind to the man, before they can blink the man yells “DAMN BRAT I’LL SUE!!!”  you lose $300 of today’s earnings";
                     GameController.Money = GameController.Money - 3;
                 }
                 StartCoroutine(Scrolling());
@@ -225,7 +225,7 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 if (CharacterInt <= 4)
                 {
-                    TextStore = CharacterName + " Avoids all the red flags and retrieves the quarter, the toxic waste somehow doesn’t kill them and gives them superhuman strength +3 to strength.";
+                    TextStore = CharacterName + " avoids all the red flags and retrieves the quarter, the toxic waste somehow doesn’t kill them and gives them superhuman strength +3 to strength.";
                     CharacterStr = CharacterStr + 3;
                 }
                 else

@@ -17,10 +17,19 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public GameObject TextBox;
     public static bool TextFinished = false;
     public string TextStore;
+    public CharacterStats EmployeeShowUp;
+    public int EmployeeAbsent = -1;
 
     void Start()
     {
         //for setting employee positions
+
+        for (int j = 0; j < GameController.HiredEmployees.Count; j++)
+        {
+            EmployeeShowUp = GameController.HiredEmployees[j].gameObject.GetComponent<CharacterStats>();
+            EmployeeShowUp.ShowedUp = true;
+        }
+
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
         {
             GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
@@ -74,7 +83,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                         else if (HitColliders[i].name == "EndButton")
                         {
                             //check if all employees have been delegated
-                            if (EmployeesDelegated >= 5)
+                            if (EmployeesDelegated >= 4)
                             {
                                 //Debug.Log("End Phase");
                                 //GameController.Money += 4;
@@ -131,6 +140,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                         EmployeesChosen[5] = HitColliders[h].gameObject;
                                     }
                                     EmployeesDelegated++;
+                                    HitColliders[h].gameObject.transform.position = HitColliders[i].gameObject.transform.position;
                                     Destroy(HitColliders[i]);
                                     Destroy(HitColliders[h]);
                                 }
@@ -145,6 +155,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     }
     IEnumerator Availability()
     {
+        TextFinished = false;
         //employee availability here
         if (GameController.CurrentDay > 1)
         {
@@ -155,27 +166,36 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             if (RandomEmployeeEvent <= 4)
             {
                 //text stuff
+                AvailabilityText.text = null;
                 TextStore = null;
                 TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " did not show up today.";
+                //code for making them actually not show up
+                EmployeeShowUp = GameController.HiredEmployees[RandomEmployeeEvent].gameObject.GetComponent<CharacterStats>();
+                EmployeeShowUp.ShowedUp = false;
+                EmployeeAbsent = RandomEmployeeEvent;
                 //add random events for reasoning
-                StartCoroutine(Scrolling());
+                StartCoroutine(Scrolling(false));
                 yield return new WaitUntil(() => TextFinished == true);
             }
             else if (RandomEmployeeEvent > 4)
             {
                 //text stuff
+                AvailabilityText.text = null;
                 TextStore = null;
                 TextStore = "Every employee showed up today.";
-                StartCoroutine(Scrolling());
+                StartCoroutine(Scrolling(false));
                 yield return new WaitUntil(() => TextFinished == true);
             }
         }
         else
         {
+            TextBox.SetActive(true);
+            AvailabilityText.gameObject.SetActive(true);
             //text stuff
+            AvailabilityText.text = null;
             TextStore = null;
-            TextStore = "Every employees showed up on the first day.";
-            StartCoroutine(Scrolling());
+            TextStore = "Every employee showed up on the first day.";
+            StartCoroutine(Scrolling(false));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -201,16 +221,16 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             {
                 //success
                 TextStore = null;
-                TextStore = EmployeesChosen[0].name + " Carts complete, $100 earned";
+                TextStore = EmployeesChosen[0].name + " carts complete, $100 earned.";
                 GameController.Money++;
             }
             else
             {
                 //fail
                 TextStore = null;
-                TextStore = EmployeesChosen[0].name + " Carts fail";
+                TextStore = EmployeesChosen[0].name + " carts fail.";
             }
-            StartCoroutine(Scrolling());
+            StartCoroutine(Scrolling(true));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -224,16 +244,16 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             {
                 //success
                 TextStore = null;
-                TextStore = EmployeesChosen[1].name + " Stocking complete, $100 earned.";
+                TextStore = EmployeesChosen[1].name + " stocking complete, $100 earned.";
                 GameController.Money++;
             }
             else
             {
                 //fail
                 TextStore = null;
-                TextStore = EmployeesChosen[1].name + " Stocking fail.";
+                TextStore = EmployeesChosen[1].name + " stocking fail.";
             }
-            StartCoroutine(Scrolling());
+            StartCoroutine(Scrolling(true));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -247,16 +267,16 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             {
                 //success
                 TextStore = null;
-                TextStore = EmployeesChosen[2].name + " Register complete, $100 earned.";
+                TextStore = EmployeesChosen[2].name + " register complete, $100 earned.";
                 GameController.Money++;
             }
             else
             {
                 //fail
                 TextStore = null;
-                TextStore = EmployeesChosen[2].name + " Register fail.";
+                TextStore = EmployeesChosen[2].name + " register fail.";
             }
-            StartCoroutine(Scrolling());
+            StartCoroutine(Scrolling(true));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -266,11 +286,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             ResultsText.text = null;
 
             TextStore = null;
-            TextStore = EmployeesChosen[3].name + " Strength training complete, strength increased by 1.";
+            TextStore = EmployeesChosen[3].name + " strength training complete, strength increased by 1.";
             //increase strength
             EmployeesChosen[3].gameObject.GetComponent<CharacterStats>().Strength++;
 
-            StartCoroutine(Scrolling());
+            StartCoroutine(Scrolling(true));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -280,11 +300,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             ResultsText.text = null;
 
             TextStore = null;
-            TextStore = EmployeesChosen[4].name + " Intelligence training complete, intelligence increased by 1.";
+            TextStore = EmployeesChosen[4].name + " intelligence training complete, intelligence increased by 1.";
             EmployeesChosen[4].gameObject.GetComponent<CharacterStats>().Intelligence++;
             //increase intelligence
 
-            StartCoroutine(Scrolling());
+            StartCoroutine(Scrolling(true));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -294,11 +314,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             ResultsText.text = null;
 
             TextStore = null;
-            TextStore = EmployeesChosen[5].name + " Social skills training complete, social skills increased by 1";
+            TextStore = EmployeesChosen[5].name + " social skills training complete, social skills increased by 1.";
             EmployeesChosen[5].gameObject.GetComponent<CharacterStats>().SocialSkills++;
             //increase social skills
 
-            StartCoroutine(Scrolling());
+            StartCoroutine(Scrolling(true));
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -316,12 +336,19 @@ public class Phase1PlayerBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator Scrolling()
+    IEnumerator Scrolling(bool Source)
     {
         foreach (char c in TextStore)
         {
             //adds the next character to the text every 0.05 seconds
-            ResultsText.text += c;
+            if (Source == true)
+            {
+                ResultsText.text += c;
+            }
+            else if (Source == false)
+            {
+                AvailabilityText.text += c;
+            }
             yield return new WaitForSeconds(0.04f);
         }
         yield return new WaitForSeconds(1f);

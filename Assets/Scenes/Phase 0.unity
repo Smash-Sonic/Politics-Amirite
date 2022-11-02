@@ -252,6 +252,7 @@ MonoBehaviour:
   Strength: 6
   Intelligence: 1
   SocialSkills: 2
+  ShowedUp: 1
   StatBox: {fileID: 914721352}
   Canvas: {fileID: 1817343366}
   StatText: {fileID: 2143822223}
@@ -746,6 +747,7 @@ MonoBehaviour:
   Strength: 2
   Intelligence: 5
   SocialSkills: 2
+  ShowedUp: 1
   StatBox: {fileID: 1547538941}
   Canvas: {fileID: 1474757757}
   StatText: {fileID: 989459019}
@@ -979,6 +981,7 @@ MonoBehaviour:
   Strength: 3
   Intelligence: 5
   SocialSkills: 1
+  ShowedUp: 1
   StatBox: {fileID: 109527324}
   Canvas: {fileID: 494433679}
   StatText: {fileID: 702556530}
@@ -2522,6 +2525,7 @@ MonoBehaviour:
   Strength: 2
   Intelligence: 4
   SocialSkills: 3
+  ShowedUp: 1
   StatBox: {fileID: 1844472883}
   Canvas: {fileID: 1251869045}
   StatText: {fileID: 950311213}
@@ -2712,6 +2716,7 @@ MonoBehaviour:
   Strength: 0
   Intelligence: 5
   SocialSkills: 4
+  ShowedUp: 1
   StatBox: {fileID: 462029424}
   Canvas: {fileID: 262922223}
   StatText: {fileID: 1109154739}
@@ -3232,6 +3237,7 @@ MonoBehaviour:
   Strength: 3
   Intelligence: 2
   SocialSkills: 4
+  ShowedUp: 1
   StatBox: {fileID: 1746489004}
   Canvas: {fileID: 1771477103}
   StatText: {fileID: 113094699}
@@ -3503,6 +3509,7 @@ MonoBehaviour:
   Strength: 4
   Intelligence: 3
   SocialSkills: 2
+  ShowedUp: 1
   StatBox: {fileID: 1329473366}
   Canvas: {fileID: 1127200140}
   StatText: {fileID: 782428754}
@@ -4469,6 +4476,7 @@ MonoBehaviour:
   Strength: 2
   Intelligence: 6
   SocialSkills: 1
+  ShowedUp: 1
   StatBox: {fileID: 592134455}
   Canvas: {fileID: 1931706302}
   StatText: {fileID: 95973141}
@@ -5626,6 +5634,7 @@ MonoBehaviour:
   Strength: 2
   Intelligence: 2
   SocialSkills: 5
+  ShowedUp: 1
   StatBox: {fileID: 2032335425}
   Canvas: {fileID: 1394450032}
   StatText: {fileID: 1615847336}

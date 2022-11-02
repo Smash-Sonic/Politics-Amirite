@@ -8,6 +8,7 @@ public class CharacterStats : MonoBehaviour
     public int Strength;
     public int Intelligence;
     public int SocialSkills;
+    public bool ShowedUp = true;
     public GameObject StatBox;
     public GameObject Canvas;
     public TMP_Text StatText;
@@ -15,6 +16,11 @@ public class CharacterStats : MonoBehaviour
     void Update()
     {
         StatText.text = "Str = " + Strength + " Int = " + Intelligence + " Soc = " + SocialSkills;
+
+        if (ShowedUp == false)
+        {
+            gameObject.transform.position = new Vector2(20 , 20);
+        }
     }
 
     void OnMouseEnter()
