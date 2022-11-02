@@ -301,7 +301,7 @@ public class Phase2TextBehaviour : MonoBehaviour
         else if (TextFinished == true)
         {
             yield return new WaitForSeconds(0.75f);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         }
     }
 }

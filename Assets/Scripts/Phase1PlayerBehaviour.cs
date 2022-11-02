@@ -303,7 +303,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
         }
 
         //give money accordingly
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(4);
     }
 
     IEnumerator PickUp(Collider2D PickedUp) 

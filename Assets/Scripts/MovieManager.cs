@@ -42,7 +42,7 @@ public class MovieManager : MonoBehaviour
         {
             if (MovieNumber == 0)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
         }
 
@@ -51,7 +51,7 @@ public class MovieManager : MonoBehaviour
         {
             if (MovieNumber == 0)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
         }
     }

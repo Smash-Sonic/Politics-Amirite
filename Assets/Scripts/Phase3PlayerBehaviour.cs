@@ -74,7 +74,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                         if (GameController.CurrentDay <= 6)
                         {
                             GameController.CurrentDay++;
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
                         }
                         else if (GameController.CurrentDay >= 7)
                         {
@@ -99,7 +99,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                                 //bad ending
                                 MovieManager.MovieNumber = 2;
                             }
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
                         }
                     }
                 }

@@ -57,7 +57,7 @@ public class Phase0PlayerBehaviour : MonoBehaviour
                                 //Debug.Log(GameController.HiredEmployees[h]);
                             }
                             
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
                         }
                         else
                         {
@@ -79,6 +79,7 @@ public class Phase0PlayerBehaviour : MonoBehaviour
                             if (HitColliders[h].tag == "Person")
                             {
                                 GameController.HiredEmployees.Add(HitColliders[h].gameObject);
+                                HitColliders[h].gameObject.transform.position = HitColliders[i].gameObject.transform.position;
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
                             }

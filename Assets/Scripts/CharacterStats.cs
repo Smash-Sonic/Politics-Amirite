@@ -22,7 +22,7 @@ public class CharacterStats : MonoBehaviour
         StatBox.SetActive(true);
         Canvas.SetActive(true);
         StatText.gameObject.SetActive(true);
-        Debug.Log("Mouse is over GameObject.");
+        //Debug.Log("Mouse is over GameObject.");
     }
 
     void OnMouseExit()
@@ -30,6 +30,6 @@ public class CharacterStats : MonoBehaviour
         StatBox.SetActive(false);
         Canvas.SetActive(false);
         StatText.gameObject.SetActive(false);
-        Debug.Log("Mouse is no longer on GameObject.");
+        //Debug.Log("Mouse is no longer on GameObject.");
     }
 }
