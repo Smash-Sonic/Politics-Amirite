@@ -10,8 +10,10 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public Collider2D[] HitColliders;
     public int EmployeesDelegated = 0;
     public bool IsHolding = false;
+    public bool IntroFinished = false;
     public GameObject[] EmployeesChosen = new GameObject[6];
     public TMP_Text ResultsText;
+    public TMP_Text AvailabilityText;
     public GameObject TextBox;
     public static bool TextFinished = false;
     public string TextStore;
@@ -27,120 +29,162 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
         }
 
-        //employee availability here
-
+        StartCoroutine(Availability());
     }
 
     void Update()
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
-        
-        if (Input.GetMouseButtonDown(0))
+        if(IntroFinished == true)
         {
-            //check for object to pick up or button to press
-            HitColliders = null;
-            HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
-
-            //put all the touched colliders in debug log
-            /*
-            for (int i = 0; i < HitColliders.Length; i++)
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(HitColliders[i]);
-            }
-            */
+                //check for object to pick up or button to press
+                HitColliders = null;
+                HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
 
-            //for picking up an object
-            //can only pick up if something is not already held and at least one collider was detected
-            if (IsHolding == false && HitColliders.Length >= 1)
-            {
+                //put all the touched colliders in debug log
+                /*
                 for (int i = 0; i < HitColliders.Length; i++)
                 {
-                    if (HitColliders[i].tag == "Person")
-                    {
-                        if (IsHolding == false)
-                        {
-                            IsHolding = true;
-                            HoldingObject = StartCoroutine(PickUp(HitColliders[i]));
-
-                            //for being picked up off of a target
-                            /*if (HitColliders[i].tag == "Target")
-                            {
-                                EmployeesDelegated--;
-                            }*/
-                        }
-                    }
-                    else if (HitColliders[i].name == "EndButton")
-                    {
-                        //check if all employees have been delegated
-                        if (EmployeesDelegated >= 5)
-                        {
-                            //Debug.Log("End Phase");
-                            //GameController.Money += 4;
-
-                            //text time
-                            StartCoroutine(PhaseResults());
-                        }
-                        else
-                        {
-                            //Debug.Log("Please Delegate all employees to a task.");
-                        }
-                    }
+                    Debug.Log(HitColliders[i]);
                 }
-            }
-            else if (IsHolding == true)
-            {
-                //let go of held object
+                */
 
-                //for being dropped onto a target
-                for (int i = 0; i < HitColliders.Length; i++)
+                //for picking up an object
+                //can only pick up if something is not already held and at least one collider was detected
+                if (IsHolding == false && HitColliders.Length >= 1)
                 {
-                    if (HitColliders[i].tag == "Target")
+                    for (int i = 0; i < HitColliders.Length; i++)
                     {
-                        //check for which target, do stuff accordingly
-                        //GameController.Money += 1;
-                        for (int h = 0; h < HitColliders.Length; h++)
+                        if (HitColliders[i].tag == "Person")
                         {
-                            if (HitColliders[h].tag == "Person")
+                            if (IsHolding == false)
                             {
-                                if (HitColliders[i].name == "Carts")
+                                IsHolding = true;
+                                HoldingObject = StartCoroutine(PickUp(HitColliders[i]));
+    
+                                //for being picked up off of a target
+                                /*if (HitColliders[i].tag == "Target")
                                 {
-                                    //Debug.Log("hi");
-                                    EmployeesChosen[0] = HitColliders[h].gameObject;
-                                    //Debug.Log(EmployeesChosen[0]);
-                                }
-                                else if (HitColliders[i].name == "Stocking")
-                                {
-                                    EmployeesChosen[1] = HitColliders[h].gameObject;
-                                }
-                                else if (HitColliders[i].name == "Register")
-                                {
-                                    EmployeesChosen[2] = HitColliders[h].gameObject;
-                                }
-                                else if (HitColliders[i].name == "StrTraining")
-                                {
-                                    EmployeesChosen[3] = HitColliders[h].gameObject;
-                                }
-                                else if (HitColliders[i].name == "IntTraining")
-                                {
-                                    EmployeesChosen[4] = HitColliders[h].gameObject;
-                                }
-                                else if (HitColliders[i].name == "SocTraining") 
-                                {
-                                    EmployeesChosen[5] = HitColliders[h].gameObject;
-                                }
-                                EmployeesDelegated++;
-                                Destroy(HitColliders[i]);
-                                Destroy(HitColliders[h]);
+                                    EmployeesDelegated--;
+                                }*/
+                            }
+                        }
+                        else if (HitColliders[i].name == "EndButton")
+                        {
+                            //check if all employees have been delegated
+                            if (EmployeesDelegated >= 5)
+                            {
+                                //Debug.Log("End Phase");
+                                //GameController.Money += 4;
+
+                                //text time
+                                StartCoroutine(PhaseResults());
+                            }
+                            else
+                            {
+                                //Debug.Log("Please Delegate all employees to a task.");
                             }
                         }
                     }
                 }
-                IsHolding = false;
-                StopCoroutine(HoldingObject);
+                else if (IsHolding == true)
+                {
+                    //let go of held object
+
+                    //for being dropped onto a target
+                    for (int i = 0; i < HitColliders.Length; i++)
+                    {
+                        if (HitColliders[i].tag == "Target")
+                        {
+                            //check for which target, do stuff accordingly
+                            //GameController.Money += 1;
+                            for (int h = 0; h < HitColliders.Length; h++)
+                            {
+                                if (HitColliders[h].tag == "Person")
+                                {
+                                    if (HitColliders[i].name == "Carts")
+                                    {
+                                        //Debug.Log("hi");
+                                        EmployeesChosen[0] = HitColliders[h].gameObject;
+                                        //Debug.Log(EmployeesChosen[0]);
+                                    }
+                                    else if (HitColliders[i].name == "Stocking")
+                                    {
+                                        EmployeesChosen[1] = HitColliders[h].gameObject;
+                                    }
+                                    else if (HitColliders[i].name == "Register")
+                                    {
+                                        EmployeesChosen[2] = HitColliders[h].gameObject;
+                                    }
+                                    else if (HitColliders[i].name == "StrTraining")
+                                    {
+                                        EmployeesChosen[3] = HitColliders[h].gameObject;
+                                    }
+                                    else if (HitColliders[i].name == "IntTraining")
+                                    {
+                                        EmployeesChosen[4] = HitColliders[h].gameObject;
+                                    }
+                                    else if (HitColliders[i].name == "SocTraining")
+                                    {
+                                        EmployeesChosen[5] = HitColliders[h].gameObject;
+                                    }
+                                    EmployeesDelegated++;
+                                    Destroy(HitColliders[i]);
+                                    Destroy(HitColliders[h]);
+                                }
+                            }
+                        }
+                    }
+                    IsHolding = false;
+                    StopCoroutine(HoldingObject);
+                }
             }
         }
     }
+    IEnumerator Availability()
+    {
+        //employee availability here
+        if (GameController.CurrentDay > 1)
+        {
+            TextBox.SetActive(true);
+            AvailabilityText.gameObject.SetActive(true);
 
+            int RandomEmployeeEvent = Random.Range(0, 8);
+            if (RandomEmployeeEvent <= 4)
+            {
+                //text stuff
+                TextStore = null;
+                TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " did not show up today.";
+                //add random events for reasoning
+                StartCoroutine(Scrolling());
+                yield return new WaitUntil(() => TextFinished == true);
+            }
+            else if (RandomEmployeeEvent > 4)
+            {
+                //text stuff
+                TextStore = null;
+                TextStore = "Every employee showed up today.";
+                StartCoroutine(Scrolling());
+                yield return new WaitUntil(() => TextFinished == true);
+            }
+        }
+        else
+        {
+            //text stuff
+            TextStore = null;
+            TextStore = "Every employees showed up on the first day.";
+            StartCoroutine(Scrolling());
+            yield return new WaitUntil(() => TextFinished == true);
+        }
+
+        TextBox.SetActive(false);
+        AvailabilityText.gameObject.SetActive(false);
+        IntroFinished = true;
+
+        yield return null;
+    }
     IEnumerator PhaseResults() 
     {
         TextBox.SetActive(true);
@@ -156,12 +200,14 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             if (EmployeesChosen[0].gameObject.GetComponent<CharacterStats>().Strength >= 3)
             {
                 //success
+                TextStore = null;
                 TextStore = EmployeesChosen[0].name + " Carts complete, $100 earned";
                 GameController.Money++;
             }
             else
             {
                 //fail
+                TextStore = null;
                 TextStore = EmployeesChosen[0].name + " Carts fail";
             }
             StartCoroutine(Scrolling());
@@ -177,12 +223,14 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             if (EmployeesChosen[1].gameObject.GetComponent<CharacterStats>().Intelligence >= 3)
             {
                 //success
+                TextStore = null;
                 TextStore = EmployeesChosen[1].name + " Stocking complete, $100 earned.";
                 GameController.Money++;
             }
             else
             {
                 //fail
+                TextStore = null;
                 TextStore = EmployeesChosen[1].name + " Stocking fail.";
             }
             StartCoroutine(Scrolling());
@@ -198,12 +246,14 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             if (EmployeesChosen[2].gameObject.GetComponent<CharacterStats>().SocialSkills >= 3)
             {
                 //success
+                TextStore = null;
                 TextStore = EmployeesChosen[2].name + " Register complete, $100 earned.";
                 GameController.Money++;
             }
             else
             {
                 //fail
+                TextStore = null;
                 TextStore = EmployeesChosen[2].name + " Register fail.";
             }
             StartCoroutine(Scrolling());
@@ -215,6 +265,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             TextFinished = false;
             ResultsText.text = null;
 
+            TextStore = null;
             TextStore = EmployeesChosen[3].name + " Strength training complete, strength increased by 1.";
             //increase strength
             EmployeesChosen[3].gameObject.GetComponent<CharacterStats>().Strength++;
@@ -228,6 +279,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             TextFinished = false;
             ResultsText.text = null;
 
+            TextStore = null;
             TextStore = EmployeesChosen[4].name + " Intelligence training complete, intelligence increased by 1.";
             EmployeesChosen[4].gameObject.GetComponent<CharacterStats>().Intelligence++;
             //increase intelligence
@@ -241,6 +293,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             TextFinished = false;
             ResultsText.text = null;
 
+            TextStore = null;
             TextStore = EmployeesChosen[5].name + " Social skills training complete, social skills increased by 1";
             EmployeesChosen[5].gameObject.GetComponent<CharacterStats>().SocialSkills++;
             //increase social skills
