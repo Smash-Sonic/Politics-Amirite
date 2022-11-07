@@ -61,7 +61,7 @@ public class Phase0PlayerBehaviour : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Please Pick Employees to hire.");
+                            //Debug.Log("Please Pick Employees to hire.");
                         }
                     }
                 }
