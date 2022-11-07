@@ -32,11 +32,16 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
         {
-            GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
+            //GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
             GameController.HiredEmployees[i].AddComponent<BoxCollider2D>();
             GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().size = new Vector2(2, 3.5f);
             GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
         }
+        GameController.HiredEmployees[0].transform.position = new Vector3(3.65f, -3.45f, 0f);
+        GameController.HiredEmployees[1].transform.position = new Vector3(3.8f, 1f, 0f);
+        GameController.HiredEmployees[2].transform.position = new Vector3(6.9f, 1.9f, 0f);
+        GameController.HiredEmployees[3].transform.position = new Vector3(2.4f, -0.6f, 0f);
+        GameController.HiredEmployees[4].transform.position = new Vector3(5.2f, -1.2f, 0f);
 
         StartCoroutine(Availability());
     }

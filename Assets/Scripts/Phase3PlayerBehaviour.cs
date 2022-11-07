@@ -99,6 +99,11 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                                 //bad ending
                                 MovieManager.MovieNumber = 2;
                             }
+                            for (int j = 0; j < GameController.HiredEmployees.Count; j++)
+                            {
+                                //no more bozos hanging out on top of the end video
+                                Destroy(GameController.HiredEmployees[j]);
+                            }
                             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
                         }
                     }

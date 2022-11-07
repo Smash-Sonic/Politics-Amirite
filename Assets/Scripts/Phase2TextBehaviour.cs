@@ -23,11 +23,14 @@ public class Phase2TextBehaviour : MonoBehaviour
         if (GameController.CurrentDay < 7)
         {
             RandomEvent = Random.Range(1, 9);
-            if (RandomEvent == LastEvent)
-            {
-                //reroll
-                RandomEvent = Random.Range(1, 9);
-            }
+                if (RandomEvent == LastEvent)
+                {
+                    while (RandomEvent == LastEvent)
+                    {
+                        //reroll
+                        RandomEvent = Random.Range(1, 9);
+                    }
+                }
             if (RandomEvent == 1)
             {
                 TextStore = null;
@@ -184,12 +187,12 @@ public class Phase2TextBehaviour : MonoBehaviour
                 if (CharacterStr <= 3)
                 {
                     TextStore = CharacterName + " cannot beat the diplomat in a basic test of strength with their goofy little noodle arms. Wharmongra reaffirms their superiority to themselves +2 relationship.";
-                    GameController.Relationship = GameController.Relationship + 2;
+                    GameController.Relationship = GameController.Relationship + 1;
                 }
                 else if (CharacterStr > 3)
                 {
-                    TextStore = CharacterName + "wipes the floor with the diplomat, Wharmongra takes this as an act of aggression against their wonderful nation! -3 relationship.";
-                    GameController.Relationship = GameController.Relationship - 3;
+                    TextStore = CharacterName + " wipes the floor with the diplomat, Wharmongra takes this as an act of aggression against their wonderful nation! -3 relationship.";
+                    GameController.Relationship = GameController.Relationship - 1;
                 }
                 StartCoroutine(Scrolling());
             }
@@ -202,7 +205,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 else if (CharacterInt < 9)
                 {
-                    TextStore = CharacterName + "is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store.";
+                    TextStore = CharacterName + " is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store.";
                     GameController.Money--;
                 }
                 StartCoroutine(Scrolling());
@@ -216,8 +219,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 else
                 {
-                    TextStore = CharacterName + " approaches the strange man and says something kind to the man, before they can blink the man yells “DAMN BRAT I’LL SUE!!!”  you lose $300 of today’s earnings";
-                    GameController.Money = GameController.Money - 3;
+                    TextStore = CharacterName + " approaches the strange man and says something kind to the man, before they can blink the man yells “DAMN BRAT I’LL SUE!!!”  you lose $200 of today’s earnings";
+                    GameController.Money = GameController.Money - 2;
                 }
                 StartCoroutine(Scrolling());
             }
@@ -230,8 +233,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 else
                 {
-                    TextStore = CharacterName + "is not as dumb as they look and refuses to retreve the quarter, Wharmongra dislikes your employee’s survival instincts being more powerful than their loyalty to you. -1 relationship";
-                    GameController.Relationship = GameController.Relationship - 2;
+                    TextStore = CharacterName + " is not as dumb as they look and refuses to retreve the quarter, Wharmongra dislikes your employee’s survival instincts being more powerful than their loyalty to you. -1 relationship";
+                    GameController.Relationship = GameController.Relationship - 1;
                 }
                 StartCoroutine(Scrolling());
             }
@@ -243,14 +246,14 @@ public class Phase2TextBehaviour : MonoBehaviour
                 if (CharacterStr >= 8)
                 {
                     TextStore = null;
-                    TextStore = "Chig Bungus is impressed by your employee’s strength, as thanks he offers to cook an omelet for you, and you politely decline, assuring him that you mean no offense. + 5 relationship.";
-                    GameController.Relationship = GameController.Relationship + 5;
+                    TextStore = "Chig Bungus is impressed by your employee’s strength, as thanks he offers to cook an omelet for you, and you politely decline, assuring him that you mean no offense. + 4 relationship.";
+                    GameController.Relationship = GameController.Relationship + 4;
                 }
                 else if (CharacterStr < 8)
                 {
                     TextStore = null;
-                    TextStore = CharacterName + " accidently drops the stove next to Chig Bungus, Wharmongra takes this as an act of aggression against their wonderful nation! -5 relationship.";
-                    GameController.Relationship = GameController.Relationship - 5;
+                    TextStore = CharacterName + " accidently drops the stove next to Chig Bungus, Wharmongra takes this as an act of aggression against their wonderful nation! -4 relationship.";
+                    GameController.Relationship = GameController.Relationship - 4;
                 }
                 StartCoroutine(Scrolling());
             }
@@ -259,14 +262,14 @@ public class Phase2TextBehaviour : MonoBehaviour
                 if (CharacterInt >= 8)
                 {
                     TextStore = null;
-                    TextStore = CharacterName + " purposely finds defective parts to ensure that Chig Bungus’s death machine won’t actually work but it will still look cool. He does not notice and thanks you for your service. +5 relationship.";
-                    GameController.Relationship = GameController.Relationship + 5;
+                    TextStore = CharacterName + " purposely finds defective parts to ensure that Chig Bungus’s death machine won’t actually work but it will still look cool. He does not notice and thanks you for your service. +4 relationship.";
+                    GameController.Relationship = GameController.Relationship + 4;
                 }
                 else if (CharacterInt < 8)
                 {
                     TextStore = null;
-                    TextStore = CharacterName + " cannot find any of the parts Chig Bungus is looking for… He’s not mad, just disappointed. -5 relationship.";
-                    GameController.Relationship = GameController.Relationship - 5;
+                    TextStore = CharacterName + " cannot find any of the parts Chig Bungus is looking for… He’s not mad, just disappointed. -4 relationship.";
+                    GameController.Relationship = GameController.Relationship - 4;
                 }
                 StartCoroutine(Scrolling());
             }
@@ -274,13 +277,13 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 if (CharacterSoc >= 8)
                 {
-                    TextStore = CharacterName + " was able to assist Chig Bungus with their excellent public speaking skills, it’s almost a little worrying how they did so well on this particular task… +5 relationship.";
-                    GameController.Relationship = GameController.Relationship + 5;
+                    TextStore = CharacterName + " was able to assist Chig Bungus with their excellent public speaking skills, it’s almost a little worrying how they did so well on this particular task… +4 relationship.";
+                    GameController.Relationship = GameController.Relationship + 4;
                 }
                 else if (CharacterSoc < 8)
                 {
-                    TextStore = CharacterName + " sucks at writing speeches. As a result, Chig Bungus’s speech is a disaster, ybut his approval rating suspiciously still goes up. He's upset regardless. -5 relationship.";
-                    GameController.Relationship = GameController.Relationship - 5;
+                    TextStore = CharacterName + " sucks at writing speeches. As a result, Chig Bungus’s speech is a disaster, ybut his approval rating suspiciously still goes up. He's upset regardless. -4 relationship.";
+                    GameController.Relationship = GameController.Relationship - 4;
                 }
                 StartCoroutine(Scrolling());
             }
