@@ -12,9 +12,14 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     public bool IsHolding = false;
     public bool Delegated = false;
     public bool MoneySpent = false;
+    public SpriteRenderer Renderer;
 
     void Start()
     {
+        if(GameController.CurrentDay == 7)
+        {
+            Renderer.color = new Color(255, 255, 255, 255);
+        }
         //arrange employees
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
         {

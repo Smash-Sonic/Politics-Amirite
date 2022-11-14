@@ -12,6 +12,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     public bool Delegated = false;
     public CharacterStats ChosenStats;
 
+
     void Start()
     {
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
