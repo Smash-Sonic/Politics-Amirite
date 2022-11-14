@@ -20,6 +20,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public CharacterStats EmployeeShowUp;
     public int EmployeeAbsent = -1;
 
+
     void Start()
     {
         //for setting employee positions

@@ -15,6 +15,18 @@ public class Phase2TextBehaviour : MonoBehaviour
     public static int CharacterInt;
     public static int CharacterSoc;
     public static string CharacterName;
+    public SpriteRenderer Renderer;
+    public Sprite child;
+    public Sprite grandma;
+    public Sprite cleanup;
+    public Sprite bleach;
+    public Sprite elevator;
+    public Sprite cop;
+    public Sprite sale;
+    public Sprite conman;
+    public Sprite toxic;
+    public Sprite Emmasary;
+    public Sprite chigBungus;
 
     void Start()
     {
@@ -36,54 +48,63 @@ public class Phase2TextBehaviour : MonoBehaviour
                 TextStore = null;
                 TextStore = "A child is lost in the store and can’t find their parents, the child is extremely nervous and is on the brink of crying and screaming, send someone friendly to go with the child to find their parents.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = child;
             }
             else if (RandomEvent == 2)
             {
                 TextStore = null;
                 TextStore = "An old Woman tells customer service that she has lost her purse, send someone to help her find it.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = grandma;
             }
             else if (RandomEvent == 3)
             {
                 TextStore = null;
                 TextStore = "The Cleanup Company™ accepts a brand deal with your store. One of your employees needs to dress up as the company mascot: Captain Cleanup™ and stand outside the store to promote the new line of Cleanup detergent™.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = cleanup;
             }
             else if (RandomEvent == 4)
             {
                 TextStore = null;
                 TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = bleach;
             }
             else if (RandomEvent == 5)
             {
                 TextStore = null;
                 TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = Emmasary;
             }
             else if (RandomEvent == 6)
             {
                 TextStore = null;
                 TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = elevator;
             }
             else if (RandomEvent == 7)
             {
                 TextStore = null;
                 TextStore = "A con artist has entered the store, claiming that someone in the store owes them money, send someone to deal with them without being talkative.";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = conman;
             }
             else if (RandomEvent == 8)
             {
                 TextStore = null;
                 TextStore = "Someone drops a quarter into a manhole, there is a green sludge at the bottom, the quarter is not worth it, only an idiot would go after it… But maybe an idiot is exactly what you need!";
                 StartCoroutine(Scrolling());
+                Renderer.sprite = toxic;
             }
         }
         else if(GameController.CurrentDay == 7)
         {
             //chig bungus events
             RandomEvent = Random.Range(1, 4);
+            Renderer.sprite = chigBungus;
             if (RandomEvent == 1)
             {
                 TextStore = null;
