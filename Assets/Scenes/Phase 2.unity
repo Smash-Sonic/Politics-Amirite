@@ -1196,7 +1196,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1047411, y: -0.5838411}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1207,7 +1207,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1.8}
+  m_Size: {x: 2.7527075, y: 2.8301787}
   m_EdgeRadius: 0
 --- !u!212 &1433024890
 SpriteRenderer:
@@ -1269,9 +1269,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433024888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -1, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 6.81, y: -0.08, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0.75}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1438,6 +1438,18 @@ MonoBehaviour:
   RandomEvent: 0
   TextStore: 
   EventText: {fileID: 654563849}
+  Renderer: {fileID: 1433024890}
+  child: {fileID: 21300000, guid: 6d0005c14d1d1dc4fb46cda8db41a485, type: 3}
+  grandma: {fileID: 21300000, guid: 2388bd2d6c43a5343aff9c7e77798401, type: 3}
+  cleanup: {fileID: 21300000, guid: 9c271ac38b628264f966251fe409c943, type: 3}
+  bleach: {fileID: 21300000, guid: 813468209fd1061459b078fc1654de71, type: 3}
+  elevator: {fileID: 21300000, guid: e6c8bc103606833449ed139fed5df044, type: 3}
+  cop: {fileID: 21300000, guid: 7d048438ad4912844b507ce1d4f6b391, type: 3}
+  sale: {fileID: 21300000, guid: 3f018728c6ecbd541ae702e0ca9bf7f4, type: 3}
+  conman: {fileID: 21300000, guid: 47f163ee71c162247bebc8ee38670706, type: 3}
+  toxic: {fileID: 21300000, guid: 3d4e88f5434f3ab4299170d5201f01f3, type: 3}
+  Emmasary: {fileID: 21300000, guid: cde0f83257c71214fbd93f41457a4afe, type: 3}
+  chigBungus: {fileID: 21300000, guid: 932ec5799e7f7024ea3cd7e72ffe7d32, type: 3}
 --- !u!4 &1724959133
 Transform:
   m_ObjectHideFlags: 0
