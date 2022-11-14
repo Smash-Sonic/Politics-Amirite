@@ -173,7 +173,31 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 //text stuff
                 AvailabilityText.text = null;
                 TextStore = null;
-                TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " did not show up today.";
+                int randomReason = Random.Range(0, 5);
+                if(randomReason == 0)
+                {
+                    TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " was attacked by bees on the way to work and had to call off their shift due to allergies.";
+                }
+                else if(randomReason == 1)
+                {
+                    TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " was sent a threataning letter with a Wharmongran stamp in the mail and was told not to come to work today.";
+                }
+                else if (randomReason == 2)
+                {
+                    TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " took a wrong turn on their way to work and got lost in a different store, they didn't make it in time for work.";
+                }
+                else if (randomReason == 3)
+                {
+                    TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " didn't want to miss their favorite TV show so they called off their shift today.";
+                }
+                else if (randomReason == 4)
+                {
+                    TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " went on an incredibly profitable side adventure™, because of this they couldn't make it to work.";
+                }
+                else
+                {
+                    TextStore = GameController.HiredEmployees[RandomEmployeeEvent].name + " did not show up today.";
+                }
                 //code for making them actually not show up
                 EmployeeShowUp = GameController.HiredEmployees[RandomEmployeeEvent].gameObject.GetComponent<CharacterStats>();
                 EmployeeShowUp.ShowedUp = false;
