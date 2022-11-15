@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NextPhase : MonoBehaviour
-{
-   public void OnPress()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-    }
 
+{
+    public void OnPress()
+    {
+        if (CharacterSelect.HowManyEmployees == 5)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        }
+    }
 }

@@ -11,7 +11,7 @@ public class ButtonBehaviour : MonoBehaviour
     public string Name;
     public TMP_Text StatText;
     public TMP_Text StaffName;
-    public GameObject portrat;
+    public GameObject portrait;
     public GameObject employee;
     public List<GameObject> otherEmployee;
     private int i;
@@ -19,9 +19,10 @@ public class ButtonBehaviour : MonoBehaviour
     {
         StaffName.text = "Applicant Name: " + Name;
         StatText.text = "Str = " + Strength + " Int = " + Intelligence + " Soc = " + SocialSkills;
-        portrat.SetActive(true);
+        //portrait.SetActive(true);
     }
 
+    /*
     private void Update()
     {
         if(otherEmployee[i] == true)
@@ -29,4 +30,5 @@ public class ButtonBehaviour : MonoBehaviour
             portrat.SetActive(false);
         }
     }
+    */
 }

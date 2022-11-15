@@ -6,7 +6,6 @@ using TMPro;
 public class EmployeeSelectBehaviour : MonoBehaviour
 {
     public TMP_Text appliedtext;
-    public List<GameObject> employees;
     public ButtonBehaviour buttonBehaviour;
     private bool employed = false;
 
@@ -14,24 +13,15 @@ public class EmployeeSelectBehaviour : MonoBehaviour
     {
         if (employed == false)
         {
-            DontDestroyOnLoad(buttonBehaviour.employee);
+            //DontDestroyOnLoad(buttonBehaviour.employee);
             appliedtext.text = "Deselect";
             employed = true;
-            Debug.Log("it will transfer");
+            //Debug.Log("it will transfer");
         }
-
         else
         {
             appliedtext.text = "Hire";
-
             employed = false;
         }
-
-    }
-   
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 }
