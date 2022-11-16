@@ -12,9 +12,11 @@ public class MovieManager : MonoBehaviour
     public VideoClip Ending2;
     public VideoClip Ending3;
     public VideoClip Ending4;
+    public static bool VideoPlaying = false;
     void Start()
     {
         GameObject camera = GameObject.Find("Main Camera");
+        VideoPlaying = true;
         if (MovieNumber == 0)
         {
             MoviePlayer.clip = IntroMovie;
@@ -42,6 +44,7 @@ public class MovieManager : MonoBehaviour
         {
             if (MovieNumber == 0)
             {
+                VideoPlaying = false;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
         }
@@ -51,6 +54,7 @@ public class MovieManager : MonoBehaviour
         {
             if (MovieNumber == 0)
             {
+                VideoPlaying = false;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
         }
