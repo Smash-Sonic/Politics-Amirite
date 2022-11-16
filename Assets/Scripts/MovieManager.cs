@@ -12,6 +12,7 @@ public class MovieManager : MonoBehaviour
     public VideoClip Ending2;
     public VideoClip Ending3;
     public VideoClip Ending4;
+    public VideoClip ChigEntrance;
     public static bool VideoPlaying = false;
     void Start()
     {
@@ -37,25 +38,28 @@ public class MovieManager : MonoBehaviour
         {
             MoviePlayer.clip = Ending4;
         }
+        else if (MovieNumber == 5)
+        {
+            MoviePlayer.clip = ChigEntrance;
+        }
     }
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") || (int)MoviePlayer.time >= (int)MoviePlayer.length)
         {
             if (MovieNumber == 0)
             {
                 VideoPlaying = false;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
-        }
-
-        //when the movie is over
-        if ((int)MoviePlayer.time >= (int)MoviePlayer.length) 
-        {
-            if (MovieNumber == 0)
+            else if (MovieNumber == 5)
             {
+                for (int j = 0; j < GameController.HiredEmployees.Count; j++)
+                {
+                    GameController.HiredEmployees[j].SetActive(true);
+                }
                 VideoPlaying = false;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(4);
             }
         }
     }

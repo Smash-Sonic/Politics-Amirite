@@ -10,6 +10,13 @@ public class Phase0PlayerBehaviour : MonoBehaviour
     public int EmployeesHired = 0;
     public bool IsHolding = false;
 
+    /*
+    This script is not actually used in the game anymore!
+    But it's still here!
+    It's useful to look at so I'm not deleting it.
+    But it doesn't actually do anything.
+    Yippee!
+     */
     void Update()
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);

@@ -12,8 +12,6 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     public bool Delegated = false;
     public CharacterStats ChosenStats;
     public AudioClip Click;
-
-
     void Start()
     {
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
@@ -68,6 +66,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                             if (Phase2TextBehaviour.TextFinished == true)
                             {
                                 Phase2TextBehaviour.ButtonPressed = true;
+                                Destroy(HitColliders[i]);
                             }
                             //UnityEngine.SceneManagement.SceneManager.LoadScene(5);
                         }

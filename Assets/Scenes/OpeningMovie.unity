@@ -233,7 +233,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359835958}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: acd2fd491fdb0ff4eb3d7de6fe45a824, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 78148c7213c7e594ea49a0dcfe2112fd, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 697824313}
@@ -288,8 +288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoviePlayer: {fileID: 1359835959}
-  IntroMovie: {fileID: 32900000, guid: acd2fd491fdb0ff4eb3d7de6fe45a824, type: 3}
+  IntroMovie: {fileID: 32900000, guid: 78148c7213c7e594ea49a0dcfe2112fd, type: 3}
   Ending1: {fileID: 32900000, guid: ec0ba69b356714540aac1a0ad43a2a37, type: 3}
   Ending2: {fileID: 32900000, guid: 0fa1b04fc5d1a3a47892ad506f76aa40, type: 3}
   Ending3: {fileID: 32900000, guid: 74d98ffe7eb10a64ca3dc8e9c61dcfcc, type: 3}
   Ending4: {fileID: 32900000, guid: 0cfc216730352e6449506bb5f51da219, type: 3}
+  ChigEntrance: {fileID: 32900000, guid: cb17f363dccde014ca64ec3e53cee10f, type: 3}

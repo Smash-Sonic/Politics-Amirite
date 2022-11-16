@@ -11,9 +11,13 @@ public class CharacterSelect : MonoBehaviour
     public TMP_Text appliedtext;
     public int CharacterSelected;
     public static int HowManyEmployees = 0;
+    public AudioClip Click;
+    public AudioClip Hire;
 
     public void ToggleCharacter(int CharacterClicked)
     {
+        Vector3 camPos = Camera.main.transform.position;
+        AudioSource.PlayClipAtPoint(Click, camPos);
         CharacterSelected = CharacterClicked;
         for (int i = 0; i < CharacterPortraits.Count; i++)
         {
@@ -40,6 +44,7 @@ public class CharacterSelect : MonoBehaviour
     {
         if (Hired[CharacterSelected] == false && HowManyEmployees < 5)
         {
+            AudioSource.PlayClipAtPoint(Hire, new Vector3(0, 0, -8));
             Hired[CharacterSelected] = true;
             DontDestroyOnLoad(Employees[CharacterSelected]);
             GameController.HiredEmployees.Add(Employees[CharacterSelected]);

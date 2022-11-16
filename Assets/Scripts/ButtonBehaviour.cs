@@ -9,6 +9,7 @@ public class ButtonBehaviour : MonoBehaviour
     public int Intelligence;
     public int SocialSkills;
     public string Name;
+    public string Bio;
     public TMP_Text StatText;
     public TMP_Text StaffName;
     public GameObject portrait;
@@ -17,8 +18,10 @@ public class ButtonBehaviour : MonoBehaviour
     private int i;
     public void OnButtonPress()
     {
-        StaffName.text = "Applicant Name: " + Name;
-        StatText.text = "Str = " + Strength + " Int = " + Intelligence + " Soc = " + SocialSkills;
+        StaffName.text = "Name: " + Name;
+
+        StatText.text = "Str = " + Strength + " Int = " + Intelligence + " Soc = " + SocialSkills + "                                              " + Bio;
+        //bio goes here
         //portrait.SetActive(true);
     }
 

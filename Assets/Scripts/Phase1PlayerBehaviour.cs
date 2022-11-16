@@ -98,6 +98,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
                                 //text time
                                 AudioSource.PlayClipAtPoint(Click, camPos);
+                                Destroy(HitColliders[i]);
                                 StartCoroutine(PhaseResults());
                             }
                             else
@@ -165,6 +166,22 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     }
     IEnumerator Availability()
     {
+        if (GameController.CurrentDay == 1) 
+        {
+            //tutorial stuff
+
+            TextBox.SetActive(true);
+            AvailabilityText.gameObject.SetActive(true);
+
+            AvailabilityText.text = null;
+            TextStore = null;
+            TextFinished = false;
+
+            TextStore = "During the early morning, your job is to efficiently delegate employees to tasks. Make sure to check what each task entails before you assign an employee to it, then simply drag and drop an employee onto it. Sometimes, employees may not show up to work, and you'll be notified about it here.";
+
+            StartCoroutine(Scrolling(false));
+            yield return new WaitUntil(() => TextFinished == true);
+        }
         TextFinished = false;
         //employee availability here
         if (GameController.CurrentDay > 1)
@@ -207,7 +224,6 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 EmployeeShowUp = GameController.HiredEmployees[RandomEmployeeEvent].gameObject.GetComponent<CharacterStats>();
                 EmployeeShowUp.ShowedUp = false;
                 EmployeeAbsent = RandomEmployeeEvent;
-                //add random events for reasoning
                 StartCoroutine(Scrolling(false));
                 yield return new WaitUntil(() => TextFinished == true);
             }
@@ -356,8 +372,20 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             yield return new WaitUntil(() => TextFinished == true);
         }
 
-        //give money accordingly
-        UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        if (GameController.CurrentDay == 7)
+        {
+            //chig bungus entrance
+            for (int j = 0; j < GameController.HiredEmployees.Count; j++)
+            {
+                GameController.HiredEmployees[j].SetActive(false);
+            }
+            MovieManager.MovieNumber = 5;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        }
     }
 
     IEnumerator PickUp(Collider2D PickedUp) 
@@ -374,7 +402,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     {
         foreach (char c in TextStore)
         {
-            //adds the next character to the text every 0.05 seconds
+            //adds the next character to the text every 0.03 seconds
             if (Source == true)
             {
                 ResultsText.text += c;
@@ -383,7 +411,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             {
                 AvailabilityText.text += c;
             }
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.03f);
         }
         yield return new WaitForSeconds(1f);
         TextFinished = true;

@@ -31,6 +31,26 @@ public class Phase2TextBehaviour : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(PhaseText());
+    }
+    IEnumerator PhaseText()
+    {
+        TextFinished = false;
+        EventText.text = null;
+        if (GameController.CurrentDay == 1)
+        {
+            //tutorial stuff
+
+            TextStore = null;
+            TextFinished = false;
+
+            TextStore = "During work hours, you'll be confronted with a random event that you'll need to delegate an employee to. It's important to interpret what stat is required to get the best outcome.";
+
+            StartCoroutine(Scrolling());
+            yield return new WaitForSeconds(1f);
+            yield return new WaitUntil(() => TextFinished == true);
+        }
+
         TextFinished = false;
         EventText.text = null;
         if (GameController.CurrentDay < 7)
@@ -307,7 +327,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 else if (CharacterSoc < 8)
                 {
-                    TextStore = CharacterName + " sucks at writing speeches. As a result, Chig Bungus’s speech is a disaster, ybut his approval rating suspiciously still goes up. He's upset regardless. -4 relationship.";
+                    TextStore = CharacterName + " sucks at writing speeches. As a result, Chig Bungus’s speech is a disaster, but his approval rating suspiciously still goes up. He's upset regardless. -4 relationship.";
                     GameController.Relationship = GameController.Relationship - 4;
                 }
                 StartCoroutine(Scrolling());
@@ -318,17 +338,22 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         foreach (char c in TextStore)
         {
-            //adds the next character to the text every 0.04 seconds
+            //adds the next character to the text every 0.03 seconds
             EventText.text += c;
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.03f);
         }
         if (TextFinished == false)
         {
+            if (GameController.CurrentDay == 1)
+            {
+                yield return new WaitForSeconds(1f);
+            }
             TextFinished = true;
         }
         else if (TextFinished == true)
         {
             yield return new WaitForSeconds(0.75f);
+            //next scene
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         }
     }

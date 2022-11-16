@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static int Money = 0; //in 100s
     public static int Relationship = 0;
-    public static int CurrentDay = 1;
+    public static int CurrentDay = 7;
     public TMP_Text DayText;
     public TMP_Text RelationshipText;
     //public static GameObject[] HiredEmployees;
