@@ -28,6 +28,10 @@ public class Phase3PlayerBehaviour : MonoBehaviour
         {
             StartCoroutine(Tutorial());
         }
+        else 
+        {
+            TutorialFinished = true;
+        }
         if(GameController.CurrentDay == 7)
         {
             Renderer.color = new Color(255, 255, 255, 255);
