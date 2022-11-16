@@ -10,7 +10,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     public int RandomEvent;
     public string TextStore;
     public TMP_Text EventText;
-    public static int LastEvent = 99;
+    public static int LastEvent;
     public static int CharacterStr;
     public static int CharacterInt;
     public static int CharacterSoc;
@@ -39,6 +39,7 @@ public class Phase2TextBehaviour : MonoBehaviour
         EventText.text = null;
         if (GameController.CurrentDay == 1)
         {
+            LastEvent = 99;
             //tutorial stuff
 
             TextStore = null;
