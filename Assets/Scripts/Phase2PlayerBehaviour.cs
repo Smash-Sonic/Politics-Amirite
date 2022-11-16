@@ -11,6 +11,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     public bool IsHolding = false;
     public bool Delegated = false;
     public CharacterStats ChosenStats;
+    public AudioClip Click;
 
 
     void Start()

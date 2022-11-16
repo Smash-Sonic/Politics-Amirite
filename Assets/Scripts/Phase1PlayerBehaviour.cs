@@ -19,6 +19,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public string TextStore;
     public CharacterStats EmployeeShowUp;
     public int EmployeeAbsent = -1;
+    public AudioClip Click;
 
 
     void Start()
@@ -49,6 +50,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        Vector3 camPos = Camera.main.transform.position;
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         if(IntroFinished == true)
         {
@@ -147,6 +149,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                     }
                                     EmployeesDelegated++;
                                     HitColliders[h].gameObject.transform.position = HitColliders[i].gameObject.transform.position;
+                                    AudioSource.PlayClipAtPoint(Click, camPos);
                                     Destroy(HitColliders[i]);
                                     Destroy(HitColliders[h]);
                                 }

@@ -1,3 +1,11 @@
+/*****************************************************************************
+// File Name :         ButtonBehavior.cs
+// Author :            Alex Laubenstein
+// Creation Date :     November 1, 2022
+//
+// Brief Description : This is a Script that sets up the buttons for use in the
+                       main menu
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +14,7 @@ using TMPro;
 
 public class ButtonBehavior : MonoBehaviour
 {
+    //Sets up game objects for later use
     public GameObject tutorial1;
     public GameObject tutorial2;
     public GameObject tutorial3;

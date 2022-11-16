@@ -926,6 +926,7 @@ MonoBehaviour:
   TextStore: 
   EmployeeShowUp: {fileID: 0}
   EmployeeAbsent: -1
+  Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
 --- !u!1 &812304348
 GameObject:
   m_ObjectHideFlags: 0
