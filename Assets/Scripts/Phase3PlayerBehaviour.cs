@@ -13,6 +13,8 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     public bool Delegated = false;
     public bool MoneySpent = false;
     public SpriteRenderer Renderer;
+    public AudioClip Click;
+    public AudioClip Cash;
 
     void Start()
     {
@@ -48,6 +50,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        Vector3 camPos = Camera.main.transform.position;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -79,6 +82,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                         if (GameController.CurrentDay <= 6)
                         {
                             GameController.CurrentDay++;
+                            AudioSource.PlayClipAtPoint(Click, camPos);
                             UnityEngine.SceneManagement.SceneManager.LoadScene(3);
                         }
                         else if (GameController.CurrentDay >= 7)
@@ -109,6 +113,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                                 //no more bozos hanging out on top of the end video
                                 Destroy(GameController.HiredEmployees[j]);
                             }
+                            AudioSource.PlayClipAtPoint(Click, camPos);
                             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
                         }
                     }
@@ -128,7 +133,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                         {
                             if (HitColliders[h].tag == "Money")
                             {
-                                //music sound?
+                                AudioSource.PlayClipAtPoint(Cash, camPos);
                                 Destroy(HitColliders[h].gameObject);
                             }
                         }
@@ -153,7 +158,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                                 MoneySpent = true;
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
-                                //music sound?
+                                AudioSource.PlayClipAtPoint(Cash, camPos);
                             }
                         }
                     }

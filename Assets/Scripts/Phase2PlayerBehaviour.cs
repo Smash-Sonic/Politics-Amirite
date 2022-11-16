@@ -28,6 +28,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        Vector3 camPos = Camera.main.transform.position;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -72,7 +73,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                         }
                         else
                         {
-                        Debug.Log("Please Delegate an employees to this task.");
+                        Debug.Log("Please Delegate an employee to this task.");
                         }
                     }
                 }
@@ -91,6 +92,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                             {
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
+                                AudioSource.PlayClipAtPoint(Click, camPos);
 
                                 //getting stats for the chosen employee
                                 ChosenStats = HitColliders[h].gameObject.GetComponent<CharacterStats>();

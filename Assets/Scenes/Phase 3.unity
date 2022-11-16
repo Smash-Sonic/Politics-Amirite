@@ -228,6 +228,8 @@ MonoBehaviour:
   Delegated: 0
   MoneySpent: 0
   Renderer: {fileID: 1362481781}
+  Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
+  Cash: {fileID: 8300000, guid: 06b3b3392bed4a24ca40f693553bf370, type: 3}
 --- !u!1 &269493765
 GameObject:
   m_ObjectHideFlags: 0

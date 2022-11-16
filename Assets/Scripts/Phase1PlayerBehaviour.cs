@@ -97,6 +97,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 //GameController.Money += 4;
 
                                 //text time
+                                AudioSource.PlayClipAtPoint(Click, camPos);
                                 StartCoroutine(PhaseResults());
                             }
                             else

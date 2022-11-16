@@ -27,6 +27,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     public Sprite toxic;
     public Sprite Emmasary;
     public Sprite chigBungus;
+    public AudioClip Click;
 
     void Start()
     {
@@ -127,11 +128,14 @@ public class Phase2TextBehaviour : MonoBehaviour
     }
     void Update()
     {
+        Vector3 camPos = Camera.main.transform.position;
+        
         if (ButtonPressed == true)
         {
             TextStore = null;
             EventText.text = null;
             ButtonPressed = false;
+            AudioSource.PlayClipAtPoint(Click, camPos);
             StopCoroutine(Scrolling());
             ResultText();
         }
