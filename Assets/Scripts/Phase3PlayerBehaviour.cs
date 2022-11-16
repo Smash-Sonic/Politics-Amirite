@@ -128,8 +128,8 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                         {
                             if (HitColliders[h].tag == "Money")
                             {
-                                Destroy(HitColliders[i]);
-                                Destroy(HitColliders[h]);
+                                //music sound?
+                                Destroy(HitColliders[h].gameObject);
                             }
                         }
                     }
@@ -153,6 +153,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                                 MoneySpent = true;
                                 Destroy(HitColliders[i]);
                                 Destroy(HitColliders[h]);
+                                //music sound?
                             }
                         }
                     }
