@@ -68,7 +68,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         Vector3 camPos = Camera.main.transform.position;
-
+       
         if (TutorialFinished == true)
         {
             if (Input.GetMouseButtonDown(0))

@@ -12,6 +12,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     public bool Delegated = false;
     public CharacterStats ChosenStats;
     public AudioClip Click;
+    public SpriteRenderer Renderer;
     void Start()
     {
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
@@ -27,8 +28,11 @@ public class Phase2PlayerBehaviour : MonoBehaviour
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         Vector3 camPos = Camera.main.transform.position;
-
-        if (Input.GetMouseButtonDown(0))
+        if (Delegated == true)
+        {
+            Renderer.color = new Color(255, 255, 255, 255);
+        }
+            if (Input.GetMouseButtonDown(0))
         {
             //check for object to pick up or button to press
             HitColliders = null;

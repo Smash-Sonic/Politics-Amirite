@@ -21,12 +21,13 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public int EmployeeAbsent = -1;
     public AudioClip Click;
     public SpriteRenderer Renderer;
+    private bool avalible = true;
 
 
     void Start()
     {
         //for setting employee positions
-
+        avalible = true;
         for (int j = 0; j < GameController.HiredEmployees.Count; j++)
         {
             EmployeeShowUp = GameController.HiredEmployees[j].gameObject.GetComponent<CharacterStats>();
@@ -82,7 +83,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             {
                                 IsHolding = true;
                                 HoldingObject = StartCoroutine(PickUp(HitColliders[i]));
-    
+
                                 //for being picked up off of a target
                                 /*if (HitColliders[i].tag == "Target")
                                 {
@@ -90,7 +91,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 }*/
                             }
                         }
-                        
+
                         else if (HitColliders[i].name == "EndButton")
                         {
                             //check if all employees have been delegated
@@ -109,7 +110,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 //Debug.Log("Please Delegate all employees to a task.");
                             }
                         }
-                        
+
                     }
                 }
                 else if (IsHolding == true)
@@ -166,9 +167,26 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                     StopCoroutine(HoldingObject);
                 }
             }
-            else if (EmployeesDelegated >= 4)
+            else if (avalible == false)
             {
-                Renderer.color = new Color(255, 255, 255, 255);
+                if (EmployeesDelegated == 4)
+                {
+                    Renderer.color = new Color(255, 255, 255, 255);
+                }
+            }
+            else if (avalible == true)
+            {
+                if (EmployeesDelegated == 5)
+                {
+                    Renderer.color = new Color(255, 255, 255, 255);
+                }
+            }
+            else
+            {
+                if (EmployeesDelegated >= 4)
+                {
+                    Renderer.color = new Color(255, 255, 255, 255);
+                }
             }
         }
     }
@@ -200,6 +218,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             int RandomEmployeeEvent = Random.Range(0, 8);
             if (RandomEmployeeEvent <= 4)
             {
+                avalible = false;
                 //text stuff
                 AvailabilityText.text = null;
                 TextStore = null;
@@ -237,6 +256,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             }
             else if (RandomEmployeeEvent > 4)
             {
+                avalible = true;
                 //text stuff
                 AvailabilityText.text = null;
                 TextStore = null;
