@@ -20,7 +20,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public CharacterStats EmployeeShowUp;
     public int EmployeeAbsent = -1;
     public AudioClip Click;
-
+    public bool TextClicked;
 
     void Start()
     {
@@ -80,7 +80,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             {
                                 IsHolding = true;
                                 HoldingObject = StartCoroutine(PickUp(HitColliders[i]));
-    
+
                                 //for being picked up off of a target
                                 /*if (HitColliders[i].tag == "Target")
                                 {
@@ -105,6 +105,10 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             {
                                 //Debug.Log("Please Delegate all employees to a task.");
                             }
+                        }
+                        else if (HitColliders[i].name == "TextBox")
+                        {
+                            //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
                         }
                     }
                 }
@@ -412,6 +416,14 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 AvailabilityText.text += c;
             }
             yield return new WaitForSeconds(0.03f);
+        }
+        if (Source == true)
+        {
+            ResultsText.text += " (Click to advance)";
+        }
+        else if (Source == false)
+        {
+            AvailabilityText.text += " (Click to advance)";
         }
         yield return new WaitForSeconds(1f);
         TextFinished = true;

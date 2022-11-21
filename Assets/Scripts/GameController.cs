@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public static int Money = 0; //in 100s
+    public static int Money; //in 100s
     public static int Relationship = 0;
     public static int CurrentDay = 1;
     public TMP_Text DayText;
