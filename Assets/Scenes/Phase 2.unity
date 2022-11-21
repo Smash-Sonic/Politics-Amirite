@@ -953,6 +953,7 @@ MonoBehaviour:
   Delegated: 0
   ChosenStats: {fileID: 0}
   Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
+  Renderer: {fileID: 1119183236}
 --- !u!1 &1119183235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1014,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7a68e65db6526da44a46b3e4575f7787, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

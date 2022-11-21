@@ -103,7 +103,7 @@ public class Phase2TextBehaviour : MonoBehaviour
             else if (RandomEvent == 6)
             {
                 TextStore = null;
-                TextStore = "A lawyer and his son are trapped in the elevator, send someone to help get them out of the elevator.";
+                TextStore = "A lawyer and his son are trapped in the elevator, send someone to fix the elevator.";
                 StartCoroutine(Scrolling());
                 Renderer.sprite = elevator;
             }

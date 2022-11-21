@@ -68,7 +68,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         Vector3 camPos = Camera.main.transform.position;
-
+       
         if (TutorialFinished == true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -107,22 +107,22 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                             else if (GameController.CurrentDay >= 7)
                             {
                                 //end the game
-                                if (GameController.Relationship >= 5)
+                                if (GameController.Relationship >= 15)
                                 {
                                     //best ending
                                     MovieManager.MovieNumber = 3;
                                 }
-                                else if (GameController.Relationship >= 0)
+                                else if (GameController.Relationship >= 10)
                                 {
                                     //good ending
                                     MovieManager.MovieNumber = 4;
                                 }
-                                else if (GameController.Relationship <= -5)
+                                else if (GameController.Relationship <= 0)
                                 {
                                     //worst ending
                                     MovieManager.MovieNumber = 1;
                                 }
-                                else if (GameController.Relationship <= -1)
+                                else if (GameController.Relationship <= 5)
                                 {
                                     //bad ending
                                     MovieManager.MovieNumber = 2;
