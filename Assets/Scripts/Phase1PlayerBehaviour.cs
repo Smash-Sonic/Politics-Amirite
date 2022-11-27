@@ -36,9 +36,12 @@ public class Phase1PlayerBehaviour : MonoBehaviour
         for (int i = 0; i < GameController.HiredEmployees.Count; i++)
         {
             //GameController.HiredEmployees[i].transform.position = new Vector3((i*2.5f)-7.25f, -2.5f, 0);
-            GameController.HiredEmployees[i].AddComponent<BoxCollider2D>();
-            GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().size = new Vector2(2, 3.5f);
-            GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
+            if (GameController.HiredEmployees[i].GetComponent<BoxCollider2D>() == null)
+            {
+                GameController.HiredEmployees[i].AddComponent<BoxCollider2D>();
+                GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().size = new Vector2(2, 3.5f);
+                GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
+            }
         }
         GameController.HiredEmployees[0].transform.position = new Vector3(3.65f, -3.45f, 0f);
         GameController.HiredEmployees[1].transform.position = new Vector3(3.8f, 1f, 0f);
@@ -99,6 +102,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 //Debug.Log("End Phase");
                                 //GameController.Money += 4;
                                 //text time
+                                EmployeesDelegated = 0;
                                 AudioSource.PlayClipAtPoint(Click, camPos);
                                 Destroy(HitColliders[i]);
                                 StartCoroutine(PhaseResults());
@@ -169,7 +173,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                     StopCoroutine(HoldingObject);
                 }
             }
-            else if (avalible == false)
+            if (avalible == false)
             {
                 if (EmployeesDelegated == 4)
                 {
