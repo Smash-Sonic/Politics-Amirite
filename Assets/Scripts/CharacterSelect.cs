@@ -9,8 +9,10 @@ public class CharacterSelect : MonoBehaviour
     public List<GameObject> Employees;
     public List<bool> Hired;
     public TMP_Text appliedtext;
+    public TMP_Text numberedEmployeeText;
     public int CharacterSelected;
     public static int HowManyEmployees = 0;
+    public static int EmployeesLeft = 5;
     public AudioClip Click;
     public AudioClip Hire;
 
@@ -50,6 +52,15 @@ public class CharacterSelect : MonoBehaviour
             GameController.HiredEmployees.Add(Employees[CharacterSelected]);
             appliedtext.text = "Already Hired";
             HowManyEmployees++;
+            EmployeesLeft--;
+            if (EmployeesLeft == 0)
+            {
+                numberedEmployeeText.text = "Click Here to Continue to the Next Phase";
+            }
+            else
+            {
+                numberedEmployeeText.text = "Next Phase (Requires " + EmployeesLeft + " Employees)";
+            }
         }
     }
 }

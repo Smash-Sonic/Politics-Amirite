@@ -5214,6 +5214,7 @@ MonoBehaviour:
   - {fileID: 918281812}
   Hired: 000000000000000000
   appliedtext: {fileID: 891831702}
+  numberedEmployeeText: {fileID: 1338484053}
   CharacterSelected: 0
   Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
   Hire: {fileID: 8300000, guid: 582d7f450e3c6d94fafae49b5cfdbd2d, type: 3}
@@ -8610,7 +8611,7 @@ GameObject:
   - component: {fileID: 1727102324}
   - component: {fileID: 1727102323}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hire buttons image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
