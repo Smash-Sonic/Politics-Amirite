@@ -112,6 +112,31 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                         else if (HitColliders[i].name == "TextBox")
                         {
                             //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
+                            if (TextFinished == false)
+                            {
+                                Debug.Log("fill out");
+                                //fill out textbox
+                                /*
+                                StopCoroutine(Scrolling(false));
+                                StopCoroutine(Scrolling(true));
+                                AvailabilityText.text = TextStore;
+                                ResultsText.text = TextStore;
+                                AvailabilityText.text += " (Click to advance)";
+                                ResultsText.text += " (Click to advance)";
+                                
+
+                                TextFinished = true;
+                                */
+                            }
+                            else
+                            {
+                                Debug.Log("close");
+                                //close textbox
+                                /*
+                                TextBox.SetActive(false);
+                                AvailabilityText.gameObject.SetActive(false);
+                                */
+                            }
                         }
                     }
                 }
@@ -443,6 +468,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             }
             yield return new WaitForSeconds(0.03f);
         }
+        //idk why i made two basically identical textboxes but it's not worth tampering with
         if (Source == true)
         {
             ResultsText.text += " (Click to advance)";
