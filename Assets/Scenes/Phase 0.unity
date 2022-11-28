@@ -1730,7 +1730,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 386663152}
   employee: {fileID: 357782136}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &357782136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,8 +2216,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 233782048}
   employee: {fileID: 918281812}
-  otherEmployee:
-  - {fileID: 259697735}
+  image: {fileID: 1938506970}
 --- !u!114 &476505784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5214,9 +5213,11 @@ MonoBehaviour:
   - {fileID: 918281812}
   Hired: 000000000000000000
   appliedtext: {fileID: 891831702}
+  numberedEmployeeText: {fileID: 1338484053}
   CharacterSelected: 0
   Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
   Hire: {fileID: 8300000, guid: 582d7f450e3c6d94fafae49b5cfdbd2d, type: 3}
+  image: {fileID: 1938506970}
 --- !u!1 &989459017
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,7 +6187,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 515799976}
   employee: {fileID: 142852743}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &1188660998
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,7 +6365,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 655140197}
   employee: {fileID: 894517310}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &1250092198
 GameObject:
   m_ObjectHideFlags: 0
@@ -6722,7 +6723,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 814260131}
   employee: {fileID: 1048988737}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &1329473366
 GameObject:
   m_ObjectHideFlags: 0
@@ -6909,7 +6910,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 1250092198}
   employee: {fileID: 64105903}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &1338484051
 GameObject:
   m_ObjectHideFlags: 0
@@ -8610,7 +8611,7 @@ GameObject:
   - component: {fileID: 1727102324}
   - component: {fileID: 1727102323}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hire buttons image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9153,7 +9154,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 1666061186}
   employee: {fileID: 1514372268}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &1807740466
 GameObject:
   m_ObjectHideFlags: 0
@@ -9254,8 +9255,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 1119192933}
   employee: {fileID: 1119192933}
-  otherEmployee:
-  - {fileID: 814260131}
+  image: {fileID: 0}
 --- !u!1 &1817343366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9443,6 +9443,18 @@ MonoBehaviour:
       - m_Target: {fileID: 985730400}
         m_TargetAssemblyTypeName: CharacterSelect, Assembly-CSharp
         m_MethodName: HireCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 476505783}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: BackgroundDarken
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9854,7 +9866,7 @@ MonoBehaviour:
   StaffName: {fileID: 503716567}
   portrait: {fileID: 552576912}
   employee: {fileID: 2029419641}
-  otherEmployee: []
+  image: {fileID: 0}
 --- !u!1 &2029419641
 GameObject:
   m_ObjectHideFlags: 0

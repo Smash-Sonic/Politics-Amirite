@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CharacterSelect : MonoBehaviour
@@ -9,10 +10,13 @@ public class CharacterSelect : MonoBehaviour
     public List<GameObject> Employees;
     public List<bool> Hired;
     public TMP_Text appliedtext;
+    public TMP_Text numberedEmployeeText;
     public int CharacterSelected;
     public static int HowManyEmployees = 0;
+    public static int EmployeesLeft = 5;
     public AudioClip Click;
     public AudioClip Hire;
+    public Image image;
 
     public void ToggleCharacter(int CharacterClicked)
     {
@@ -37,6 +41,7 @@ public class CharacterSelect : MonoBehaviour
         else
         {
             appliedtext.text = "Already Hired";
+            image.GetComponent<Image>().color = new Color(100, 0, 0, 255);
         }
     }
 
@@ -50,6 +55,15 @@ public class CharacterSelect : MonoBehaviour
             GameController.HiredEmployees.Add(Employees[CharacterSelected]);
             appliedtext.text = "Already Hired";
             HowManyEmployees++;
+            EmployeesLeft--;
+            if (EmployeesLeft == 0)
+            {
+                numberedEmployeeText.text = "Click Here to Continue to the Next Phase";
+            }
+            else
+            {
+                numberedEmployeeText.text = "Next Phase (Requires " + EmployeesLeft + " Employees)";
+            }
         }
     }
 }
