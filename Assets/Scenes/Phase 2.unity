@@ -1382,7 +1382,7 @@ SpriteRenderer:
   m_SortingLayerID: 612889149
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b58c278e873f6d74091f612729ea6900, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddc4a907fbbdf854bb2d8dd3ef698565, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   conman: {fileID: 21300000, guid: 47f163ee71c162247bebc8ee38670706, type: 3}
   toxic: {fileID: 21300000, guid: 3d4e88f5434f3ab4299170d5201f01f3, type: 3}
   Emmasary: {fileID: 21300000, guid: cde0f83257c71214fbd93f41457a4afe, type: 3}
-  chigBungus: {fileID: 21300000, guid: 7b663b1c5858afe4b9bd0aa9eaa42f3d, type: 3}
+  chigBungus: {fileID: 21300000, guid: 811f83e0567f7ca45acb7aedd8697fa1, type: 3}
   Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
 --- !u!4 &1724959133
 Transform:
