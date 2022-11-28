@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ButtonBehaviour : MonoBehaviour
@@ -14,24 +15,16 @@ public class ButtonBehaviour : MonoBehaviour
     public TMP_Text StaffName;
     public GameObject portrait;
     public GameObject employee;
-    public List<GameObject> otherEmployee;
-    private int i;
+    public Image image;
     public void OnButtonPress()
     {
         StaffName.text = "Name: " + Name;
 
         StatText.text = "Str = " + Strength + " Int = " + Intelligence + " Soc = " + SocialSkills + "                                              " + Bio;
-        //bio goes here
-        //portrait.SetActive(true);
     }
 
-    /*
-    private void Update()
+    public void BackgroundDarken()
     {
-        if(otherEmployee[i] == true)
-        {
-            portrat.SetActive(false);
-        }
+        image.GetComponent<Image>().color = new Color(100, 0, 0, 255);
     }
-    */
 }

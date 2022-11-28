@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CharacterSelect : MonoBehaviour
@@ -15,6 +16,7 @@ public class CharacterSelect : MonoBehaviour
     public static int EmployeesLeft = 5;
     public AudioClip Click;
     public AudioClip Hire;
+    public Image image;
 
     public void ToggleCharacter(int CharacterClicked)
     {
@@ -39,6 +41,7 @@ public class CharacterSelect : MonoBehaviour
         else
         {
             appliedtext.text = "Already Hired";
+            image.GetComponent<Image>().color = new Color(100, 0, 0, 255);
         }
     }
 
