@@ -114,30 +114,30 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                         if (HitColliders[i].name == "TextBox")
                         {
                             //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
-                            if (TextFinished == false)
+                            if (TextClicked == false)
                             {
                                 Debug.Log("fill out");
                                 //fill out textbox
-                                /*
+
                                 StopCoroutine(Scrolling(false));
                                 StopCoroutine(Scrolling(true));
+
                                 AvailabilityText.text = TextStore;
                                 ResultsText.text = TextStore;
-                                AvailabilityText.text += " (Click to advance)";
-                                ResultsText.text += " (Click to advance)";
-                                
+                                if (TextFinished == true)
+                                {
+                                    ResultsText.text += " (Click to advance)";
+                                    AvailabilityText.text += " (Click to advance)";
+                                }
 
-                                TextFinished = true;
-                                */
+                                TextClicked = true;
                             }
                             else
                             {
                                 Debug.Log("close");
                                 //close textbox
-                                /*
-                                TextBox.SetActive(false);
-                                AvailabilityText.gameObject.SetActive(false);
-                                */
+
+                                TextFinished = true;
                             }
                         }
                     }
@@ -243,8 +243,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
                                 AvailabilityText.text = TextStore;
                                 ResultsText.text = TextStore;
-                                AvailabilityText.text += " (Click to advance)";
-                                ResultsText.text += " (Click to advance)";
+                                if (TextFinished == true)
+                                {
+                                    ResultsText.text += " (Click to advance)";
+                                    AvailabilityText.text += " (Click to advance)";
+                                }
 
                                 TextClicked = true;
                             }
@@ -499,6 +502,9 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
     IEnumerator Scrolling(bool Source)
     {
+        Debug.Log(TextStore);
+        TextClicked = false;
+        TextFinished = false;
         foreach (char c in TextStore)
         {
             if (TextClicked == false)
@@ -516,15 +522,18 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             }
         }
         //idk why i made two basically identical textboxes but it's not worth tampering with
-        if (Source == true)
+        if (TextFinished == false)
         {
-            ResultsText.text += " (Click to advance)";
+            if (Source == true)
+            {
+                ResultsText.text += " (Click to advance)";
+            }
+            else if (Source == false)
+            {
+                AvailabilityText.text += " (Click to advance)";
+            }
         }
-        else if (Source == false)
-        {
-            AvailabilityText.text += " (Click to advance)";
-        }
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
         //TextFinished = true;
     }
 }
