@@ -23,8 +23,8 @@ public class ButtonBehaviour : MonoBehaviour
         StatText.text = "Str = " + Strength + " Int = " + Intelligence + " Soc = " + SocialSkills + "                                              " + Bio;
     }
 
-    public void BackgroundDarken()
+    /*public void BackgroundDarken()
     {
         image.GetComponent<Image>().color = new Color(100, 0, 0, 255);
-    }
+    }*/
 }

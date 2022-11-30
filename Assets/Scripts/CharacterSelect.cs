@@ -41,7 +41,6 @@ public class CharacterSelect : MonoBehaviour
         else
         {
             appliedtext.text = "Already Hired";
-            image.GetComponent<Image>().color = new Color(100, 0, 0, 255);
         }
     }
 
