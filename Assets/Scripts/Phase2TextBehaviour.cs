@@ -31,10 +31,14 @@ public class Phase2TextBehaviour : MonoBehaviour
     public Collider2D[] HitColliders;
     public bool TextClicked;
     public bool AdvancePhase;
+    public bool AddClickText;
+    public bool AdvanceText;
 
     void Start()
     {
         AdvancePhase = false;
+        AdvanceText = false;
+        AddClickText = true;
         StartCoroutine(PhaseText());
     }
     IEnumerator PhaseText()
@@ -119,6 +123,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 Renderer.sprite = toxic;
             }
             TextClicked = false;
+            AddClickText = false;
             StartCoroutine(Scrolling());
         }
         else if(GameController.CurrentDay == 7)
@@ -142,6 +147,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 TextStore = "Is that really him!? Chig Bungus himself has just walked through the door. He is the current ruler of Wharmongra and a ruthless customer. It seems he needs help writing his latest political speech. Why did he come to the store for this? We may never know, just send an employee to help him.";
             }
             TextClicked = false;
+            AddClickText = false;
             StartCoroutine(Scrolling());
         }
     }
@@ -154,6 +160,7 @@ public class Phase2TextBehaviour : MonoBehaviour
             TextStore = null;
             EventText.text = null;
             ButtonPressed = false;
+            TextFinished = true;
             AudioSource.PlayClipAtPoint(Click, camPos);
             StopCoroutine(Scrolling());
             ResultText();
@@ -172,10 +179,13 @@ public class Phase2TextBehaviour : MonoBehaviour
                     {
                         if (TextClicked == false)
                         {
-                            StopCoroutine(Scrolling());
                             TextClicked = true;
 
                             EventText.text = TextStore;
+                            if (AddClickText == true)
+                            {
+                                EventText.text += " (Click to advance)";
+                            }
                         }
                         else
                         {
@@ -212,6 +222,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 2)
@@ -231,6 +242,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 3)
@@ -247,6 +259,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 4)
@@ -263,6 +276,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 5)
@@ -279,6 +293,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 6)
@@ -295,6 +310,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 7)
@@ -311,6 +327,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 8)
@@ -327,6 +344,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
         }
@@ -348,6 +366,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 2)
@@ -366,6 +385,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 3)
@@ -382,6 +402,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 }
                 TextClicked = false;
                 AdvancePhase = true;
+                AddClickText = true;
                 StartCoroutine(Scrolling());
             }
         }
@@ -396,6 +417,17 @@ public class Phase2TextBehaviour : MonoBehaviour
                 //adds the next character to the text every 0.03 seconds
                 EventText.text += c;
                 yield return new WaitForSeconds(0.03f);
+            }
+        }
+        if (AdvanceText == true)
+        {
+            TextFinished = true;
+        }
+        if (TextClicked == false)
+        {
+            if (AddClickText == true)
+            {
+                EventText.text += " (Click to advance)";
             }
         }
 

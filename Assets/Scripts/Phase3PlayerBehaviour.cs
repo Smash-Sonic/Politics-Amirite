@@ -16,13 +16,13 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     public SpriteRenderer Renderer;
     public AudioClip Click;
     public AudioClip Cash;
-
     public bool TutorialFinished = false;
     public int RandomEvent;
     public string TextStore;
     public TMP_Text TutorialText;
     public GameObject TextBox;
     public bool TextClicked;
+
     void Start()
     {
         if (GameController.CurrentDay == 1)
@@ -203,6 +203,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                             if (TextClicked == false)
                             {
                                 TutorialText.text = TextStore;
+                                TutorialText.text += " (Click to advance)";
                                 TextClicked = true;
                             }
                             else
@@ -248,9 +249,9 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                 yield return new WaitForSeconds(0.03f);
             }
         }
-        yield return new WaitForSeconds(1f);
-        //TextBox.SetActive(false);
-        //TutorialText.gameObject.SetActive(false);
-        //TutorialFinished = true;
+        if (TextClicked == false)
+        {
+            TutorialText.text += " (Click to advance)";
+        }
     }
 }
