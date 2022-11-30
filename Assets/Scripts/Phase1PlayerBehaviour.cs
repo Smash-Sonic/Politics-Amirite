@@ -43,11 +43,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
             }
         }
-        GameController.HiredEmployees[0].transform.position = new Vector3(3.65f, -3.45f, 0f);
+        GameController.HiredEmployees[0].transform.position = new Vector3(2.45f, -3.45f, 0f);
         GameController.HiredEmployees[1].transform.position = new Vector3(3.8f, 1f, 0f);
         GameController.HiredEmployees[2].transform.position = new Vector3(6.9f, 1.9f, 0f);
         GameController.HiredEmployees[3].transform.position = new Vector3(2.4f, -0.6f, 0f);
-        GameController.HiredEmployees[4].transform.position = new Vector3(5.2f, -1.2f, 0f);
+        GameController.HiredEmployees[4].transform.position = new Vector3(4.85f, -1.2f, 0f);
 
         StartCoroutine(Availability());
     }
@@ -56,9 +56,8 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     {
         Vector3 camPos = Camera.main.transform.position;
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
-        if(IntroFinished == true)
+        if (IntroFinished == true)
         {
-
             if (Input.GetMouseButtonDown(0))
             {
                 //check for object to pick up or button to press
@@ -93,14 +92,12 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 }*/
                             }
                         }
-
                         else if (HitColliders[i].name == "EndButton")
                         {
                             //check if all employees have been delegated
                             if (EmployeesDelegated >= 4)
                             {
                                 //Debug.Log("End Phase");
-                                //GameController.Money += 4;
                                 //text time
                                 EmployeesDelegated = 0;
                                 AudioSource.PlayClipAtPoint(Click, camPos);
@@ -113,33 +110,33 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 //Debug.Log("Please Delegate all employees to a task.");
                             }
                         }
-                        else if (HitColliders[i].name == "TextBox")
+                        if (HitColliders[i].name == "TextBox")
                         {
                             //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
-                            if (TextFinished == false)
+                            if (TextClicked == false)
                             {
-                                Debug.Log("fill out");
+                                //Debug.Log("fill out");
                                 //fill out textbox
-                                /*
+
                                 StopCoroutine(Scrolling(false));
                                 StopCoroutine(Scrolling(true));
+
                                 AvailabilityText.text = TextStore;
                                 ResultsText.text = TextStore;
-                                AvailabilityText.text += " (Click to advance)";
-                                ResultsText.text += " (Click to advance)";
-                                
+                                if (TextFinished == true)
+                                {
+                                    ResultsText.text += " (Click to advance)";
+                                    AvailabilityText.text += " (Click to advance)";
+                                }
 
-                                TextFinished = true;
-                                */
+                                TextClicked = true;
                             }
                             else
                             {
-                                Debug.Log("close");
+                                //Debug.Log("close");
                                 //close textbox
-                                /*
-                                TextBox.SetActive(false);
-                                AvailabilityText.gameObject.SetActive(false);
-                                */
+
+                                TextFinished = true;
                             }
                         }
                     }
@@ -153,8 +150,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                     {
                         if (HitColliders[i].tag == "Target")
                         {
-                            //check for which target, do stuff accordingly
-                            //GameController.Money += 1;
+                            //check for which target, do stuff accordingly;
                             for (int h = 0; h < HitColliders.Length; h++)
                             {
                                 if (HitColliders[h].tag == "Person")
@@ -217,6 +213,51 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 if (EmployeesDelegated >= 4)
                 {
                     Renderer.color = new Color(255, 255, 255, 255);
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                //check for object to pick up or button to press
+                HitColliders = null;
+                HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
+
+                if (IsHolding == false && HitColliders.Length >= 1)
+                {
+                    for (int i = 0; i < HitColliders.Length; i++)
+                    {
+                        if (HitColliders[i].name == "TextBox")
+                        {
+                            //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
+                            if (TextClicked == false)
+                            {
+                                //Debug.Log("fill out");
+                                //fill out textbox
+                                
+                                StopCoroutine(Scrolling(false));
+                                StopCoroutine(Scrolling(true));
+
+                                AvailabilityText.text = TextStore;
+                                ResultsText.text = TextStore;
+                                if (TextFinished == true)
+                                {
+                                    ResultsText.text += " (Click to advance)";
+                                    AvailabilityText.text += " (Click to advance)";
+                                }
+
+                                TextClicked = true;
+                            }
+                            else
+                            {
+                                //Debug.Log("close");
+                                //close textbox
+
+                                TextFinished = true;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -459,29 +500,38 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
     IEnumerator Scrolling(bool Source)
     {
+        //Debug.Log(TextStore);
+        TextClicked = false;
+        TextFinished = false;
         foreach (char c in TextStore)
         {
-            //adds the next character to the text every 0.03 seconds
+            if (TextClicked == false)
+            {
+                //adds the next character to the text every 0.03 seconds
+                if (Source == true)
+                {
+                    ResultsText.text += c;
+                }
+                else if (Source == false)
+                {
+                    AvailabilityText.text += c;
+                }
+                yield return new WaitForSeconds(0.03f);
+            }
+        }
+        //idk why i made two basically identical textboxes but it's not worth tampering with
+        if (TextFinished == false)
+        {
             if (Source == true)
             {
-                ResultsText.text += c;
+                ResultsText.text += " (Click to advance)";
             }
             else if (Source == false)
             {
-                AvailabilityText.text += c;
+                AvailabilityText.text += " (Click to advance)";
             }
-            yield return new WaitForSeconds(0.03f);
         }
-        //idk why i made two basically identical textboxes but it's not worth tampering with
-        if (Source == true)
-        {
-            ResultsText.text += " (Click to advance)";
-        }
-        else if (Source == false)
-        {
-            AvailabilityText.text += " (Click to advance)";
-        }
-        yield return new WaitForSeconds(1f);
-        TextFinished = true;
+        //yield return new WaitForSeconds(1f);
+        //TextFinished = true;
     }
 }

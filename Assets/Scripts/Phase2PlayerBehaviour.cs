@@ -79,7 +79,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                         }
                         else
                         {
-                        Debug.Log("Please Delegate an employee to this task.");
+                            //Debug.Log("Please Delegate an employee to this task.");
                         }
                     }
                 }

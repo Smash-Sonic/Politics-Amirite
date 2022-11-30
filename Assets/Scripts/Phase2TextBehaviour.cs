@@ -28,9 +28,13 @@ public class Phase2TextBehaviour : MonoBehaviour
     public Sprite Emmasary;
     public Sprite chigBungus;
     public AudioClip Click;
+    public Collider2D[] HitColliders;
+    public bool TextClicked;
+    public bool AdvancePhase;
 
     void Start()
     {
+        AdvancePhase = false;
         StartCoroutine(PhaseText());
     }
     IEnumerator PhaseText()
@@ -47,8 +51,9 @@ public class Phase2TextBehaviour : MonoBehaviour
 
             TextStore = "During work hours, you'll be confronted with a random event that you'll need to delegate an employee to. It's important to interpret what stat is required to get the best outcome.";
 
+            TextClicked = false;
             StartCoroutine(Scrolling());
-            yield return new WaitForSeconds(1f);
+            //yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => TextFinished == true);
         }
 
@@ -69,58 +74,52 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 TextStore = null;
                 TextStore = "A child is lost in the store and can’t find their parents, the child is extremely nervous and is on the brink of crying and screaming, send someone friendly to go with the child to find their parents.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = child;
             }
             else if (RandomEvent == 2)
             {
                 TextStore = null;
                 TextStore = "An old Woman tells customer service that she has lost her purse, send someone to help her find it.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = grandma;
             }
             else if (RandomEvent == 3)
             {
                 TextStore = null;
                 TextStore = "The Cleanup Company™ accepts a brand deal with your store. One of your employees needs to dress up as the company mascot: Captain Cleanup™ and stand outside the store to promote the new line of Cleanup detergent™.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = cleanup;
             }
             else if (RandomEvent == 4)
             {
                 TextStore = null;
                 TextStore = "There has been a spill of bleach in aisle 6. Send an employee to clean up the mess.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = bleach;
             }
             else if (RandomEvent == 5)
             {
                 TextStore = null;
                 TextStore = "A representative of Wharmongra arrives at the store to show off the superiority of their country, the diplomat challenges you to an arm wrestling contest, winning the contest would only provoke Wharmongra.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = Emmasary;
             }
             else if (RandomEvent == 6)
             {
                 TextStore = null;
                 TextStore = "A lawyer and his son are trapped in the elevator, send someone to fix the elevator.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = elevator;
             }
             else if (RandomEvent == 7)
             {
                 TextStore = null;
                 TextStore = "A con artist has entered the store, claiming that someone in the store owes them money, send someone to deal with them without being talkative.";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = conman;
             }
             else if (RandomEvent == 8)
             {
                 TextStore = null;
                 TextStore = "Someone drops a quarter into a manhole, there is a green sludge at the bottom, the quarter is not worth it, only an idiot would go after it… But maybe an idiot is exactly what you need!";
-                StartCoroutine(Scrolling());
                 Renderer.sprite = toxic;
             }
+            TextClicked = false;
+            StartCoroutine(Scrolling());
         }
         else if(GameController.CurrentDay == 7)
         {
@@ -131,20 +130,19 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 TextStore = null;
                 TextStore = "Is that really him!? Chig Bungus himself has just walked through the door. He is the current ruler of Wharmongra and a ruthless customer. Looks like he’s buying a very heavy iron stove to cook his eggs, send an employee to lift it for him.";
-                StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 2)
             {
                 TextStore = null;
                 TextStore = "Is that really him!? Chig Bungus himself has just walked through the door. He is the current ruler of Wharmongra and a ruthless customer. He’s got blueprints for a complicated death machine, send an employee to help him find the right parts.";
-                StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 3)
             {
                 TextStore = null;
                 TextStore = "Is that really him!? Chig Bungus himself has just walked through the door. He is the current ruler of Wharmongra and a ruthless customer. It seems he needs help writing his latest political speech. Why did he come to the store for this? We may never know, just send an employee to help him.";
-                StartCoroutine(Scrolling());
             }
+            TextClicked = false;
+            StartCoroutine(Scrolling());
         }
     }
     void Update()
@@ -160,10 +158,42 @@ public class Phase2TextBehaviour : MonoBehaviour
             StopCoroutine(Scrolling());
             ResultText();
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            HitColliders = null;
+            HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
+
+            if (HitColliders.Length >= 1)
+            {
+                for (int i = 0; i < HitColliders.Length; i++)
+                {
+                    if (HitColliders[i].name == "TextBox")
+                    {
+                        if (TextClicked == false)
+                        {
+                            StopCoroutine(Scrolling());
+                            TextClicked = true;
+
+                            EventText.text = TextStore;
+                        }
+                        else
+                        {
+                            TextFinished = true;
+                        }
+                        if (AdvancePhase == true && TextFinished == true)
+                        {
+                            //next scene
+                            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+                        }
+                    }
+                }
+            }
+        }
     }
     void ResultText()
     {
-        //Debug.Log("Character had " + CharacterStr + " strength, " + CharacterInt + " intelligence, " + CharacterSoc + " social skills.");
+        TextFinished = false;
         if (GameController.CurrentDay < 7)
         {
             if (RandomEvent == 1)
@@ -180,6 +210,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " approaches the child but before they can get to them, the child screams and runs away. This causes a scene and the police are called to the store. -$100 in lost income.";
                     GameController.Money--;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 2)
@@ -195,9 +227,10 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = null;
                     TextStore = CharacterName + " searches the entire store but cannot find the missing purse, " + CharacterName + " then has the “brilliant idea” to search the Wharmongran embassy, and they are later arrested for trespassing. -$100 in lost income and -1 relationship.";
                     GameController.Money--;
-                    GameController.Relationship++;
+                    GameController.Relationship--;
                 }
-                //possibly add in a third ending where the character simply doesn't find the purse and nothing happens if they don't have low int?
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 3)
@@ -212,6 +245,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " as Captain Cleanup™ is a menace to society and scares away many potential customers. You lose $100 of your average earnings today.";
                     GameController.Money--;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 4)
@@ -226,6 +261,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " Fails so miserably that the fire department is called to the store. -$100 in lost income";
                     GameController.Money--;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 5)
@@ -240,6 +277,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " wipes the floor with the diplomat, Wharmongra takes this as an act of aggression against their wonderful nation! -1 relationship.";
                     GameController.Relationship = GameController.Relationship - 1;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 6)
@@ -254,6 +293,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store.";
                     GameController.Money--;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 7)
@@ -268,6 +309,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " approaches the strange man and says something kind to the man, before they can blink the man yells “DAMN BRAT I’LL SUE!!!”  you lose $200 of today’s earnings";
                     GameController.Money = GameController.Money - 2;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 8)
@@ -282,6 +325,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " is not as dumb as they look and refuses to retreve the quarter, Wharmongra dislikes your employee’s survival instincts being more powerful than their loyalty to you. -1 relationship";
                     GameController.Relationship = GameController.Relationship - 1;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
         }
@@ -301,6 +346,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " accidently drops the stove next to Chig Bungus, Wharmongra takes this as an act of aggression against their wonderful nation! -4 relationship.";
                     GameController.Relationship = GameController.Relationship - 4;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 2)
@@ -317,6 +364,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " cannot find any of the parts Chig Bungus is looking for… He’s not mad, just disappointed. -4 relationship.";
                     GameController.Relationship = GameController.Relationship - 4;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
             else if (RandomEvent == 3)
@@ -331,6 +380,8 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = CharacterName + " sucks at writing speeches. As a result, Chig Bungus’s speech is a disaster, but his approval rating suspiciously still goes up. He's upset regardless. -4 relationship.";
                     GameController.Relationship = GameController.Relationship - 4;
                 }
+                TextClicked = false;
+                AdvancePhase = true;
                 StartCoroutine(Scrolling());
             }
         }
@@ -339,21 +390,17 @@ public class Phase2TextBehaviour : MonoBehaviour
     {
         foreach (char c in TextStore)
         {
-            //adds the next character to the text every 0.03 seconds
-            EventText.text += c;
-            yield return new WaitForSeconds(0.03f);
-        }
-        if (TextFinished == false)
-        {
-            if (GameController.CurrentDay == 1)
+            //stop adding characters if has been clicked
+            if (TextClicked == false)
             {
-                yield return new WaitForSeconds(1f);
+                //adds the next character to the text every 0.03 seconds
+                EventText.text += c;
+                yield return new WaitForSeconds(0.03f);
             }
-            TextFinished = true;
         }
-        else if (TextFinished == true)
+
+        if (AdvancePhase == true && TextFinished == true)
         {
-            yield return new WaitForSeconds(0.75f);
             //next scene
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         }
