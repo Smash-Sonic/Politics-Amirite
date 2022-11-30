@@ -8,6 +8,7 @@ public class CharacterSelect : MonoBehaviour
 {
     public List<GameObject> CharacterPortraits;
     public List<GameObject> Employees;
+    public List<Button> EmployeeButtons;
     public List<bool> Hired;
     public TMP_Text appliedtext;
     public TMP_Text numberedEmployeeText;
@@ -48,6 +49,7 @@ public class CharacterSelect : MonoBehaviour
     {
         if (Hired[CharacterSelected] == false && HowManyEmployees < 5)
         {
+            EmployeeButtons[CharacterSelected].interactable = false;
             AudioSource.PlayClipAtPoint(Hire, new Vector3(0, 0, -8));
             Hired[CharacterSelected] = true;
             DontDestroyOnLoad(Employees[CharacterSelected]);
