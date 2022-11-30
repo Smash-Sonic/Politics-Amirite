@@ -11,9 +11,18 @@ public class GameController : MonoBehaviour
     public static int CurrentDay = 1;
     public TMP_Text DayText;
     public TMP_Text RelationshipText;
+    public GameObject ButtonResume;
+    public GameObject ButtonMainMenu;
+    public GameObject PauseBackground;
+    public GameObject Curser;
+    public Camera cam;
     //public static GameObject[] HiredEmployees;
     public static List<GameObject> HiredEmployees = new List<GameObject>();
-
+    private void Start()
+    {
+        ButtonResume.SetActive(false);
+        ButtonMainMenu.SetActive(false);
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.R))
@@ -27,6 +36,19 @@ public class GameController : MonoBehaviour
             }
             */
         }
+
+        
+        if(Input.GetKey(KeyCode.P))
+        {
+            PauseBackground.SetActive(true);
+            ButtonResume.SetActive(true);
+            ButtonMainMenu.SetActive(true);
+        }
+        if(ButtonResume.activeSelf)
+        {
+            Curser.transform.position = new Vector3(20, 20, 0);
+        }
+
         //don't have day text when picking employees at the start of the game
         if (SceneManager.GetActiveScene().name != "Phase 0")
         {
@@ -62,5 +84,16 @@ public class GameController : MonoBehaviour
         {
             RelationshipText.text = "Wharmongra Relationship: " + Relationship;
         }
+    }
+    public void ToggleUnpause()
+    {
+        Curser.transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        ButtonResume.SetActive(false);
+        ButtonMainMenu.SetActive(false);
+        PauseBackground.SetActive(false);
+    }
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
