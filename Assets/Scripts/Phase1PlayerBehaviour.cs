@@ -43,11 +43,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
             }
         }
-        GameController.HiredEmployees[0].transform.position = new Vector3(3.65f, -3.45f, 0f);
+        GameController.HiredEmployees[0].transform.position = new Vector3(2.45f, -3.45f, 0f);
         GameController.HiredEmployees[1].transform.position = new Vector3(3.8f, 1f, 0f);
         GameController.HiredEmployees[2].transform.position = new Vector3(6.9f, 1.9f, 0f);
         GameController.HiredEmployees[3].transform.position = new Vector3(2.4f, -0.6f, 0f);
-        GameController.HiredEmployees[4].transform.position = new Vector3(5.2f, -1.2f, 0f);
+        GameController.HiredEmployees[4].transform.position = new Vector3(4.85f, -1.2f, 0f);
 
         StartCoroutine(Availability());
     }
@@ -116,7 +116,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
                             if (TextClicked == false)
                             {
-                                Debug.Log("fill out");
+                                //Debug.Log("fill out");
                                 //fill out textbox
 
                                 StopCoroutine(Scrolling(false));
@@ -134,7 +134,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("close");
+                                //Debug.Log("close");
                                 //close textbox
 
                                 TextFinished = true;
@@ -235,7 +235,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             //fill out the whole text box if the text is still writing, if it's finished then go to the next thing
                             if (TextClicked == false)
                             {
-                                Debug.Log("fill out");
+                                //Debug.Log("fill out");
                                 //fill out textbox
                                 
                                 StopCoroutine(Scrolling(false));
@@ -253,7 +253,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("close");
+                                //Debug.Log("close");
                                 //close textbox
 
                                 TextFinished = true;
@@ -502,7 +502,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
 
     IEnumerator Scrolling(bool Source)
     {
-        Debug.Log(TextStore);
+        //Debug.Log(TextStore);
         TextClicked = false;
         TextFinished = false;
         foreach (char c in TextStore)

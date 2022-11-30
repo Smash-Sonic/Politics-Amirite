@@ -22,6 +22,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     public string TextStore;
     public TMP_Text TutorialText;
     public GameObject TextBox;
+    public bool TextClicked;
     void Start()
     {
         if (GameController.CurrentDay == 1)
@@ -71,7 +72,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     {
         transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         Vector3 camPos = Camera.main.transform.position;
-       
+
         if (TutorialFinished == true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -79,12 +80,7 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                 //check for object to pick up or button to press
                 HitColliders = null;
                 HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
-                /*
-                for (int i = 0; i < HitColliders.Length; i++)
-                {
-                    Debug.Log(HitColliders[i]);
-                }
-                */
+
                 if (IsHolding == false && HitColliders.Length >= 1)
                 {
                     MoneySpent = false;
@@ -190,6 +186,36 @@ public class Phase3PlayerBehaviour : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            //clicking text here
+            if (Input.GetMouseButtonDown(0))
+            {
+                HitColliders = null;
+                HitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, transform.localScale / 2, 0f);
+
+                if (HitColliders.Length >= 1)
+                {
+                    for (int i = 0; i < HitColliders.Length; i++)
+                    {
+                        if (HitColliders[i].name == "TextBox")
+                        {
+                            if (TextClicked == false)
+                            {
+                                TutorialText.text = TextStore;
+                                TextClicked = true;
+                            }
+                            else
+                            {
+                                TextBox.SetActive(false);
+                                TutorialText.gameObject.SetActive(false);
+                                TutorialFinished = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     IEnumerator PickUp(Collider2D PickedUp)
@@ -215,13 +241,16 @@ public class Phase3PlayerBehaviour : MonoBehaviour
     {
         foreach (char c in TextStore)
         {
-            //adds the next character to the text every 0.03 seconds
-            TutorialText.text += c;
-            yield return new WaitForSeconds(0.03f);
+            if (TextClicked == false)
+            {
+                //adds the next character to the text every 0.03 seconds
+                TutorialText.text += c;
+                yield return new WaitForSeconds(0.03f);
+            }
         }
         yield return new WaitForSeconds(1f);
-        TextBox.SetActive(false);
-        TutorialText.gameObject.SetActive(false);
-        TutorialFinished = true;
+        //TextBox.SetActive(false);
+        //TutorialText.gameObject.SetActive(false);
+        //TutorialFinished = true;
     }
 }
