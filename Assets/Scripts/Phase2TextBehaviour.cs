@@ -227,7 +227,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                     TextStore = null;
                     TextStore = CharacterName + " searches the entire store but cannot find the missing purse, " + CharacterName + " then has the “brilliant idea” to search the Wharmongran embassy, and they are later arrested for trespassing. -$100 in lost income and -1 relationship.";
                     GameController.Money--;
-                    GameController.Relationship++;
+                    GameController.Relationship--;
                 }
                 TextClicked = false;
                 AdvancePhase = true;

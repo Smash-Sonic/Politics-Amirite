@@ -98,7 +98,6 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                             if (EmployeesDelegated >= 4)
                             {
                                 //Debug.Log("End Phase");
-                                //GameController.Money += 4;
                                 //text time
                                 EmployeesDelegated = 0;
                                 AudioSource.PlayClipAtPoint(Click, camPos);
@@ -151,8 +150,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                     {
                         if (HitColliders[i].tag == "Target")
                         {
-                            //check for which target, do stuff accordingly
-                            //GameController.Money += 1;
+                            //check for which target, do stuff accordingly;
                             for (int h = 0; h < HitColliders.Length; h++)
                             {
                                 if (HitColliders[h].tag == "Person")
