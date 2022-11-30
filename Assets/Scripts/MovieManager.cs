@@ -61,6 +61,10 @@ public class MovieManager : MonoBehaviour
                 VideoPlaying = false;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(4);
             }
+            else if (MovieNumber == 1 || MovieNumber == 2 || MovieNumber == 3 || MovieNumber == 4)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            }
         }
     }
 }
