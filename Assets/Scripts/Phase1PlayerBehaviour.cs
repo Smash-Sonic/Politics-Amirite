@@ -43,11 +43,11 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 GameController.HiredEmployees[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.5f);
             }
         }
-        GameController.HiredEmployees[0].transform.position = new Vector3(2.45f, -3.45f, 0f);
+        GameController.HiredEmployees[0].transform.position = new Vector3(1.5f, -3.6f, 0f);
         GameController.HiredEmployees[1].transform.position = new Vector3(3.8f, 1f, 0f);
         GameController.HiredEmployees[2].transform.position = new Vector3(6.9f, 1.9f, 0f);
         GameController.HiredEmployees[3].transform.position = new Vector3(2.4f, -0.6f, 0f);
-        GameController.HiredEmployees[4].transform.position = new Vector3(4.85f, -1.2f, 0f);
+        GameController.HiredEmployees[4].transform.position = new Vector3(4.7f, -2.5f, 0f);
 
         StartCoroutine(Availability());
     }
@@ -275,7 +275,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             TextStore = null;
             TextFinished = false;
 
-            TextStore = "During the early morning, your job is to efficiently delegate employees to tasks. Make sure to check what each task entails before you assign an employee to it, then simply drag and drop an employee onto it. Sometimes, employees may not show up to work, and you'll be notified about it here.";
+            TextStore = "During the early morning, your job is to efficiently delegate employees to tasks or have them train one of their stats in the training room in the bottom left. Make sure to check what each task entails before you assign an employee to it, then simply drag and drop an employee onto it. Sometimes, employees may not show up to work, and you'll be notified about it here.";
 
             StartCoroutine(Scrolling(false));
             yield return new WaitUntil(() => TextFinished == true);
