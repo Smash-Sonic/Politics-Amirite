@@ -520,6 +520,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
             }
         }
         //idk why i made two basically identical textboxes but it's not worth tampering with
+        TextClicked = true;
         if (TextFinished == false)
         {
             if (Source == true)
