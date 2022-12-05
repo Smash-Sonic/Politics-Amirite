@@ -88,13 +88,12 @@ public class GameController : MonoBehaviour
         for (int j = 0; j < HiredEmployees.Count; j++)
         {
             //no more bozos hanging out where they shouldn't be
-            //Debug.Log("die");
             Destroy(GameController.HiredEmployees[j]);
         }
         HiredEmployees = new List<GameObject>();
-        //Debug.Log("augh");
         Paused = false;
         MovieManager.MovieNumber = 0;
+        CurrentDay = 1;
         SceneManager.LoadScene(0);
     }
 }
