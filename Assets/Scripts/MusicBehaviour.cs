@@ -31,7 +31,7 @@ public class MusicBehaviour : MonoBehaviour
         }
         */
 
-        if (MovieManager.VideoPlaying == true)
+        if (MovieManager.VideoPlaying == true || GameController.Paused == true)
         {
             audioSource.Stop();
             if (MovieManager.MovieNumber == 5)

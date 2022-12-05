@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public static int Money; //in 100s
     public static int Relationship = 0;
     public static int CurrentDay = 1;
+    public static bool Paused;
     public TMP_Text DayText;
     public TMP_Text RelationshipText;
     public GameObject ButtonResume;
@@ -22,6 +23,7 @@ public class GameController : MonoBehaviour
     {
         ButtonResume.SetActive(false);
         ButtonMainMenu.SetActive(false);
+        Paused = false;
     }
     void Update()
     {
@@ -40,6 +42,7 @@ public class GameController : MonoBehaviour
         
         if(Input.GetKey(KeyCode.P))
         {
+            Paused = true;
             PauseBackground.SetActive(true);
             ButtonResume.SetActive(true);
             ButtonMainMenu.SetActive(true);
@@ -87,6 +90,7 @@ public class GameController : MonoBehaviour
     }
     public void ToggleUnpause()
     {
+        Paused = false;
         Curser.transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         ButtonResume.SetActive(false);
         ButtonMainMenu.SetActive(false);
