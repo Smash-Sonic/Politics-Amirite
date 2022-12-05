@@ -19,6 +19,11 @@ public class CharacterSelect : MonoBehaviour
     public AudioClip Hire;
     public Image image;
 
+    public void Start()
+    {
+        HowManyEmployees = 0;
+        EmployeesLeft = 5;
+}
     public void ToggleCharacter(int CharacterClicked)
     {
         Vector3 camPos = Camera.main.transform.position;

@@ -98,6 +98,12 @@ public class GameController : MonoBehaviour
     }
     public void ToMainMenu()
     {
+        for (int j = 0; j < HiredEmployees.Count; j++)
+        {
+            //no more bozos hanging out on top of the end video
+            Destroy(GameController.HiredEmployees[j]);
+        }
+        Paused = false;
         SceneManager.LoadScene(0);
     }
 }

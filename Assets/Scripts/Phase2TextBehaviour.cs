@@ -33,6 +33,7 @@ public class Phase2TextBehaviour : MonoBehaviour
     public bool AdvancePhase;
     public bool AddClickText;
     public bool AdvanceText;
+    public GameObject target;
 
     void Start()
     {
@@ -66,14 +67,15 @@ public class Phase2TextBehaviour : MonoBehaviour
         if (GameController.CurrentDay < 7)
         {
             RandomEvent = Random.Range(1, 9);
-                if (RandomEvent == LastEvent)
+            if (RandomEvent == LastEvent)
+            {
+                while (RandomEvent == LastEvent)
                 {
-                    while (RandomEvent == LastEvent)
-                    {
-                        //reroll
-                        RandomEvent = Random.Range(1, 9);
-                    }
+                    //reroll
+                    RandomEvent = Random.Range(1, 9);
                 }
+            }
+            target.tag = "Target";
             if (RandomEvent == 1)
             {
                 TextStore = null;
@@ -435,6 +437,11 @@ public class Phase2TextBehaviour : MonoBehaviour
         {
             //next scene
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+        }
+        yield return new WaitForSeconds(1f);
+        if (TextStore == EventText.text)
+        {
+            TextFinished = true;
         }
     }
 }

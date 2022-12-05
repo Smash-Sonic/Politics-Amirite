@@ -35,7 +35,7 @@ public class Phase2PlayerBehaviour : MonoBehaviour
         {
             Renderer.color = new Color(255, 255, 255, 255);
         }
-            if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             //check for object to pick up or button to press
             HitColliders = null;
