@@ -14,8 +14,17 @@ public class MovieManager : MonoBehaviour
     public VideoClip Ending4;
     public VideoClip ChigEntrance;
     public static bool VideoPlaying = false;
+    public double time;
+    public double currentTime;
     void Start()
     {
+        //
+        //remove this
+        //
+        MovieNumber = 0;
+        //
+        //remove this
+        //
         GameObject camera = GameObject.Find("Main Camera");
         VideoPlaying = true;
         if (MovieNumber == 0)
@@ -42,10 +51,16 @@ public class MovieManager : MonoBehaviour
         {
             MoviePlayer.clip = ChigEntrance;
         }
+        //time = MoviePlayer.length;
+        
+        //Debug.Log(time);
     }
     void Update()
     {
-        if (Input.GetKeyDown("space") || (int)MoviePlayer.time >= (int)MoviePlayer.length)
+        //currentTime = MoviePlayer.time;
+        //Debug.Log(currentTime);
+        MoviePlayer.loopPointReached += EndReached;
+        if (Input.GetKeyDown("space"))
         {
             if (MovieNumber == 0)
             {
@@ -61,8 +76,31 @@ public class MovieManager : MonoBehaviour
                 VideoPlaying = false;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(4);
             }
-            else if (MovieNumber == 1 || MovieNumber == 2 || MovieNumber == 3 || MovieNumber == 4)
+        }
+    }
+
+    void EndReached(UnityEngine.Video.VideoPlayer vp)
+    {
+        if (MovieNumber == 0)
+        {
+            VideoPlaying = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
+        else if (MovieNumber == 5)
+        {
+            for (int j = 0; j < GameController.HiredEmployees.Count; j++)
             {
+                GameController.HiredEmployees[j].SetActive(true);
+            }
+            VideoPlaying = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        }
+        else if (MovieNumber == 1 || MovieNumber == 2 || MovieNumber == 3 || MovieNumber == 4)
+        {
+            //you shouldn't be able to skip your ending
+            //if (MoviePlayer.loopPointReached)
+            {
+                MovieNumber = 0;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }

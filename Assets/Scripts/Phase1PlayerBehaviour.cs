@@ -23,6 +23,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
     public SpriteRenderer Renderer;
     private bool avalible = true;
     public bool TextClicked;
+    public GameObject endbutton;
     void Start()
     {
         //for setting employee positions
@@ -92,7 +93,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                                 }*/
                             }
                         }
-                        else if (HitColliders[i].name == "EndButton")
+                        else if (HitColliders[i].tag == "EndButton")
                         {
                             //check if all employees have been delegated
                             if (EmployeesDelegated >= 4)
@@ -199,6 +200,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 if (EmployeesDelegated == 4)
                 {
                     Renderer.color = new Color(255, 255, 255, 255);
+                    endbutton.tag = "EndButton";
                 }
             }
             else if (avalible == true)
@@ -206,6 +208,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 if (EmployeesDelegated == 5)
                 {
                     Renderer.color = new Color(255, 255, 255, 255);
+                    endbutton.tag = "EndButton";
                 }
             }
             else
@@ -213,6 +216,7 @@ public class Phase1PlayerBehaviour : MonoBehaviour
                 if (EmployeesDelegated >= 4)
                 {
                     Renderer.color = new Color(255, 255, 255, 255);
+                    endbutton.tag = "EndButton";
                 }
             }
         }

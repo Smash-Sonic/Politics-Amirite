@@ -17,29 +17,16 @@ public class GameController : MonoBehaviour
     public GameObject PauseBackground;
     public GameObject Curser;
     public Camera cam;
-    //public static GameObject[] HiredEmployees;
     public static List<GameObject> HiredEmployees = new List<GameObject>();
     private void Start()
     {
+        
         ButtonResume.SetActive(false);
         ButtonMainMenu.SetActive(false);
         Paused = false;
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-            /*
-            Debug.Log(HiredEmployees.Count);
-            for (int i = 0; i < HiredEmployees.Count; i++)
-            {
-                Debug.Log(HiredEmployees[i]);
-            }
-            */
-        }
-
-        
         if(Input.GetKey(KeyCode.P))
         {
             Paused = true;
@@ -100,10 +87,14 @@ public class GameController : MonoBehaviour
     {
         for (int j = 0; j < HiredEmployees.Count; j++)
         {
-            //no more bozos hanging out on top of the end video
+            //no more bozos hanging out where they shouldn't be
+            //Debug.Log("die");
             Destroy(GameController.HiredEmployees[j]);
         }
+        HiredEmployees = new List<GameObject>();
+        //Debug.Log("augh");
         Paused = false;
+        MovieManager.MovieNumber = 0;
         SceneManager.LoadScene(0);
     }
 }

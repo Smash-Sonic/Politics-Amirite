@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Money
   - TextBox
+  - EndButton
   layers:
   - Default
   - TransparentFX

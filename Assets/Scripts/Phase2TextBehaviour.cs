@@ -67,14 +67,14 @@ public class Phase2TextBehaviour : MonoBehaviour
         if (GameController.CurrentDay < 7)
         {
             RandomEvent = Random.Range(1, 9);
-            if (RandomEvent == LastEvent)
+            //Debug.Log(RandomEvent);
+            //Debug.Log(LastEvent);
+            while (RandomEvent == LastEvent)
             {
-                while (RandomEvent == LastEvent)
-                {
-                    //reroll
-                    RandomEvent = Random.Range(1, 9);
-                }
+                //reroll
+                RandomEvent = Random.Range(1, 9);
             }
+            LastEvent = RandomEvent;
             target.tag = "Target";
             if (RandomEvent == 1)
             {
@@ -133,6 +133,7 @@ public class Phase2TextBehaviour : MonoBehaviour
             //chig bungus events
             RandomEvent = Random.Range(1, 4);
             Renderer.sprite = chigBungus;
+            target.tag = "Target";
             if (RandomEvent == 1)
             {
                 TextStore = null;

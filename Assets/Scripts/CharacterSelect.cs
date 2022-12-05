@@ -23,7 +23,7 @@ public class CharacterSelect : MonoBehaviour
     {
         HowManyEmployees = 0;
         EmployeesLeft = 5;
-}
+    }
     public void ToggleCharacter(int CharacterClicked)
     {
         Vector3 camPos = Camera.main.transform.position;
