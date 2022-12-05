@@ -288,9 +288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoviePlayer: {fileID: 1359835959}
-  IntroMovie: {fileID: 32900000, guid: 78148c7213c7e594ea49a0dcfe2112fd, type: 3}
-  Ending1: {fileID: 32900000, guid: ec0ba69b356714540aac1a0ad43a2a37, type: 3}
-  Ending2: {fileID: 32900000, guid: 0fa1b04fc5d1a3a47892ad506f76aa40, type: 3}
-  Ending3: {fileID: 32900000, guid: 74d98ffe7eb10a64ca3dc8e9c61dcfcc, type: 3}
-  Ending4: {fileID: 32900000, guid: 0cfc216730352e6449506bb5f51da219, type: 3}
+  IntroMovie: {fileID: 32900000, guid: 91861080fc9aa694f8caaf04ceb20737, type: 3}
+  Ending1: {fileID: 32900000, guid: 319661d656721b4469e1abd5c66e2d69, type: 3}
+  Ending2: {fileID: 32900000, guid: 6120107e9c53899419d4a3b1e86f41ce, type: 3}
+  Ending3: {fileID: 32900000, guid: e49de3a87ba5bbd4799bda0268d89722, type: 3}
+  Ending4: {fileID: 32900000, guid: d593397e24369b341b9ac739e3a2b613, type: 3}
   ChigEntrance: {fileID: 32900000, guid: cb17f363dccde014ca64ec3e53cee10f, type: 3}
