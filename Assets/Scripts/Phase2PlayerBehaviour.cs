@@ -69,12 +69,8 @@ public class Phase2PlayerBehaviour : MonoBehaviour
                         //check if an employee has been delegated
                         if (Delegated == true)
                         {
-                            //Debug.Log("End phase");
-                            if (Phase2TextBehaviour.TextFinished == true)
-                            {
-                                Phase2TextBehaviour.ButtonPressed = true;
-                                Destroy(HitColliders[i]);
-                            }
+                            Phase2TextBehaviour.ButtonPressed = true;
+                            Destroy(HitColliders[i]);
                             //UnityEngine.SceneManagement.SceneManager.LoadScene(5);
                         }
                         else
