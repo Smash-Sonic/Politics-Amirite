@@ -303,12 +303,12 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 if (CharacterInt >= 4)
                 {
-                    TextStore = CharacterName + " successfully gets them out of the elevator, the lawyer gives you a big tip.";
+                    TextStore = CharacterName + " successfully gets them out of the elevator, the lawyer gives you a big tip. +$100.";
                     GameController.Money++;
                 }
                 else if (CharacterInt < 9)
                 {
-                    TextStore = CharacterName + " is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store.";
+                    TextStore = CharacterName + " is unable to get the two people out of the elevator, 5 hours later they are finally free. The pair both suffer brain damage. The lawyer is enraged and sues the store. -$100";
                     GameController.Money--;
                 }
                 TextClicked = false;

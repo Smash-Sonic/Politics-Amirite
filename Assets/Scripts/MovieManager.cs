@@ -18,14 +18,8 @@ public class MovieManager : MonoBehaviour
     public double currentTime;
     void Start()
     {
-        //
-        //remove this
-        //
-        MovieNumber = 0;
-        //
-        //remove this
-        //
         GameObject camera = GameObject.Find("Main Camera");
+        MoviePlayer.loopPointReached += EndReached;
         VideoPlaying = true;
         if (MovieNumber == 0)
         {
@@ -51,15 +45,9 @@ public class MovieManager : MonoBehaviour
         {
             MoviePlayer.clip = ChigEntrance;
         }
-        //time = MoviePlayer.length;
-        
-        //Debug.Log(time);
     }
     void Update()
     {
-        //currentTime = MoviePlayer.time;
-        //Debug.Log(currentTime);
-        MoviePlayer.loopPointReached += EndReached;
         if (Input.GetKeyDown("space"))
         {
             if (MovieNumber == 0)
@@ -97,8 +85,6 @@ public class MovieManager : MonoBehaviour
         }
         else if (MovieNumber == 1 || MovieNumber == 2 || MovieNumber == 3 || MovieNumber == 4)
         {
-            //you shouldn't be able to skip your ending
-            //if (MoviePlayer.loopPointReached)
             {
                 MovieNumber = 0;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
