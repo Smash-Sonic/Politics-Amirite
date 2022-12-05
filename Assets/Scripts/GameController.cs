@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour
     public static List<GameObject> HiredEmployees = new List<GameObject>();
     private void Start()
     {
-        
         ButtonResume.SetActive(false);
         ButtonMainMenu.SetActive(false);
         Paused = false;

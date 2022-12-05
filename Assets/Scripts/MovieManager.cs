@@ -88,6 +88,8 @@ public class MovieManager : MonoBehaviour
             {
                 MovieNumber = 0;
                 GameController.CurrentDay = 1;
+                GameController.Money = 0;
+                GameController.Relationship = 0;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
