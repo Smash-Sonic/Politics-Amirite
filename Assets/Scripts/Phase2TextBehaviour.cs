@@ -334,13 +334,13 @@ public class Phase2TextBehaviour : MonoBehaviour
             {
                 if (CharacterInt <= 4)
                 {
-                    TextStore = CharacterName + " avoids all the red flags and retrieves the quarter, the toxic waste somehow doesn’t kill them and gives them superhuman strength +3 to strength.";
-                    CharacterStr = CharacterStr + 3;
+                    TextStore = CharacterName + " avoids all the red flags and retrieves the quarter, the toxic waste somehow doesn’t kill them. Wharmongra is impressed by how easily your employees listen to your commands. +1 Relationship.";
+                    GameController.Relationship += 1;
                 }
                 else
                 {
-                    TextStore = CharacterName + " is not as dumb as they look and refuses to retreve the quarter, Wharmongra dislikes your employee’s survival instincts being more powerful than their loyalty to you. -1 relationship";
-                    GameController.Relationship = GameController.Relationship - 1;
+                    TextStore = CharacterName + " is not as dumb as they look and refuses to retreve the quarter, Wharmongra dislikes your employee’s survival instincts being more powerful than their loyalty to you. -1 relationship.";
+                    GameController.Relationship -= 1;
                 }
                 TextClicked = false;
                 AdvancePhase = true;
@@ -355,7 +355,7 @@ public class Phase2TextBehaviour : MonoBehaviour
                 if (CharacterStr >= 8)
                 {
                     TextStore = null;
-                    TextStore = "Chig Bungus is impressed by your employee’s strength, as thanks he offers to cook an omelet for you, and you politely decline, assuring him that you mean no offense. + 4 relationship.";
+                    TextStore = "Chig Bungus is impressed by your employee’s strength, as thanks he offers to cook an omelet for you. You politely decline, assuring him that you mean no offense. + 4 relationship.";
                     GameController.Relationship = GameController.Relationship + 4;
                 }
                 else if (CharacterStr < 8)
