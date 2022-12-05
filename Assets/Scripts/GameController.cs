@@ -93,6 +93,8 @@ public class GameController : MonoBehaviour
         Paused = false;
         MovieManager.MovieNumber = 0;
         CurrentDay = 1;
+        Money = 0;
+        Relationship = 0;
         SceneManager.LoadScene(0);
     }
 }
