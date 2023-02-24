@@ -364,8 +364,8 @@ MonoBehaviour:
   Delegated: 0
   MoneySpent: 0
   Renderer: {fileID: 1362481781}
-  Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
-  Cash: {fileID: 8300000, guid: 06b3b3392bed4a24ca40f693553bf370, type: 3}
+  Click: {fileID: 8300000, guid: 616cf3aa9a3f7b94e85df431538c631b, type: 3}
+  Cash: {fileID: 8300000, guid: d9b6f51a719b6e24c9a6a45636abbce5, type: 3}
   TutorialFinished: 0
   RandomEvent: 0
   TextStore: 
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   ButtonResume: {fileID: 1180748811}
   ButtonMainMenu: {fileID: 172583583}
   PauseBackground: {fileID: 966702925}
-  Curser: {fileID: 92701349}
+  Cursor: {fileID: 0}
   cam: {fileID: 1411540423}
 --- !u!4 &1021214848
 Transform:

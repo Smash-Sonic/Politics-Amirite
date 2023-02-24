@@ -1499,7 +1499,7 @@ MonoBehaviour:
   TextStore: 
   EmployeeShowUp: {fileID: 0}
   EmployeeAbsent: -1
-  Click: {fileID: 8300000, guid: 5e66618d26d509a4d99f39bdb4792399, type: 3}
+  Click: {fileID: 8300000, guid: 616cf3aa9a3f7b94e85df431538c631b, type: 3}
   Renderer: {fileID: 814992366}
   TextClicked: 0
   endbutton: {fileID: 814992365}
@@ -3215,7 +3215,7 @@ MonoBehaviour:
   ButtonResume: {fileID: 476706752}
   ButtonMainMenu: {fileID: 1653628606}
   PauseBackground: {fileID: 298459753}
-  Curser: {fileID: 772193229}
+  Cursor: {fileID: 0}
   cam: {fileID: 519420031}
 --- !u!4 &1470374931
 Transform:

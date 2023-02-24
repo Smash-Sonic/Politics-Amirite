@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject ButtonResume;
     public GameObject ButtonMainMenu;
     public GameObject PauseBackground;
-    public GameObject Curser;
+    public GameObject Cursor;
     public Camera cam;
     public static List<GameObject> HiredEmployees = new List<GameObject>();
     private void Start()
@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
         }
         if(ButtonResume.activeSelf)
         {
-            Curser.transform.position = new Vector3(20, 20, 0);
+            Cursor.transform.position = new Vector3(20, 20, 0);
         }
 
         //don't have day text when picking employees at the start of the game
@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
     public void ToggleUnpause()
     {
         Paused = false;
-        Curser.transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        Cursor.transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         ButtonResume.SetActive(false);
         ButtonMainMenu.SetActive(false);
         PauseBackground.SetActive(false);
